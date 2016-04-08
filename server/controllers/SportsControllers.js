@@ -3,8 +3,8 @@ module.exports = function(app, route) {
 
   // Setup the controller for REST.
   var rest = restful.model(
-    'food',
-    app.models.food
+    'sports',
+    app.models.sports
   ).methods(['get', 'put', 'post', 'delete']);
 
   // Register this endpoint with the application.

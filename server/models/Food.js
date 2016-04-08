@@ -13,4 +13,4 @@ var FoodSchema = new mongoose.Schema({
 });
 
 // Export the model.
-module.exports = mongoose.model('food', FoodSchema);
+module.exports = FoodSchema;
