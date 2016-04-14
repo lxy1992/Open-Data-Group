@@ -1,4 +1,4 @@
 module.exports = {
   '/food': require('./controllers/FoodController'),
-  '/sports': require('./controllers/SportsControllers')
+  '/sport': require('./controllers/SportController')
 };

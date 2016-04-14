@@ -1,4 +1,4 @@
 module.exports = {
-  food: require('./Food.js'),
-  sports: require('./Sports.js')
+  food: require('./Food'),
+  sport: require('./Sport')
 };
