@@ -1,0 +1,19 @@
+{
+  "name": "openapp",
+  "version": "1.0.0",
+  "description": "A M.E.A.N application for open data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "lodash": "^4.11.1",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.4.12",
+    "resourcejs": "^1.2.0"
+  }
+}
