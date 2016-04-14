@@ -1,4 +1,4 @@
-"Activity, Exercise or Sport (1 hour)",130 lb,155 lb,180 lb,205 lb
+Activity(1 hour),130lb,155lb,180lb,205lb
 "Cycling, mountain bike, bmx",502,598,695,791
 "Cycling, ",236,281,327,372
 "Cycling, >20 mph, racing",944,1126,1308,1489
@@ -12,7 +12,7 @@ Unicycling,295,352,409,465
 "Stationary cycling, moderate",413,493,572,651
 "Stationary cycling, vigorous",620,739,858,977
 "Stationary cycling, very vigorous",738,880,1022,1163
-"Calisthenics, vigorous, pushups, situpsÄ",472,563,654,745
+"Calisthenics, vigorous, pushups, situps€",472,563,654,745
 "Calisthenics, light",207,246,286,326
 "Circuit training, minimal rest",472,563,654,745
 "Weight lifting, body building, vigorous",354,422,490,558
@@ -67,7 +67,7 @@ Bowling,177,211,245,279
 "Boxing, in ring",708,844,981,1117
 "Boxing, punching bag",354,422,490,558
 "Boxing, sparring",531,633,735,838
-"Coaching: football, basketball, soccerÄ",236,281,327,372
+"Coaching: football, basketball, soccer€",236,281,327,372
 "Cricket (batting, bowling)",295,352,409,465
 Croquet,148,176,204,233
 Curling,236,281,327,372

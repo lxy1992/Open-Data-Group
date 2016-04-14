@@ -25,4 +25,4 @@ var SportsSchema = new mongoose.Schema({
 });
 
 // Export the model.
-module.exports = SportsSchema;
+module.exports = mongoose.model('sport',SportSchema，'sports');
