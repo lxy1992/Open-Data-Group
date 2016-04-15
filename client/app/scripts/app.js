@@ -30,6 +30,10 @@ angular
         templateUrl: 'views/food.html',
         controller: 'FoodCtrl',
         controllerAs: 'food'
+      .when('/sport', {
+        templateUrl: 'views/sport.html',
+        controller: 'SportCtrl',
+        controllerAs: 'sport'
       })
       .otherwise({
         redirectTo: '/'
@@ -47,4 +51,15 @@ angular
   })
   .factory('Food', function(FoodRestangular) {
     return FoodRestangular.service('search');
+  })
+  .factory('SportRestangular', function(Restangular) {
+  return Restangular.withConfig(function(RestangularConfigurer) {
+    RestangularConfigurer.setBaseUrl('http://localhost:3000');
+    RestangularConfigurer.setRestangularFields({
+      id: '_id'
+    });
   });
+})
+.factory('Sport', function(MovieRestangular) {
+  return SportRestangular.service('sport');
+});
