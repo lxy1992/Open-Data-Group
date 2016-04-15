@@ -1,0 +1,10 @@
+<p>This is the food view.</p>
+<form method='get' action='localhost:9000/#/food'>
+    <input name='name'type='text'>
+    <input type='submit' value='Search'>
+</form>
+
+
+<p ng-repeat="food in foods">
+{{food}}
+</p>
