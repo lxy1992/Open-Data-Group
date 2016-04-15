@@ -30,6 +30,7 @@ angular
         templateUrl: 'views/food.html',
         controller: 'FoodCtrl',
         controllerAs: 'food'
+      })
       .when('/sport', {
         templateUrl: 'views/sport.html',
         controller: 'SportCtrl',

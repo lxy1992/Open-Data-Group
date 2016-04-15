@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 // Create the FoodSchema.
 var SportSchema = new mongoose.Schema({
-  "Activity, Exercise or Sport (1 hour)": {
+  "Activity(1 hour)": {
     type: String,
     required: true
   },
@@ -19,6 +19,10 @@ var SportSchema = new mongoose.Schema({
     required: true
   },
   "205 lb": {
+    type: Number,
+    required: true
+  },
+  "1 lb": {
     type: Number,
     required: true
   }
