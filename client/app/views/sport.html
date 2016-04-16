@@ -2,9 +2,12 @@
 <p>Search and select the sport you want to do.</p>
 <label for="title" class="control-label">Sport Title</label>
 <input type="text" class="form-control" ng-model="searchSportContent" id="sport title" placeholder="Sports title"></input>
-<button type="submit" class="btn btn-primary" ng-click="searchSport(searchSportContent)" value="search">Search</button>
+<!-- <button type="submit" class="btn btn-primary" ng-click="searchSport(searchSportContent)" value="search">Search</button> -->
+
 <input type="Number" class="form-control" ng-model="setForWeight" id="user weight" placeholder="Weight"></input>
-<button type="submit" class="btn btn-primary" ng-click="setWeight(setForWeight)" value="submit">Calculate</button>
+<!-- <button type="submit" class="btn btn-primary" ng-click="setWeight(setForWeight)" value="submit">Calculate</button> -->
+
+
 <p><strong>Page:</strong> {{tableParams.page()}}
 <p><strong>Count per page:</strong> {{tableParams.count()}}
 <table ng-table="tableParams" class="table table-striped" show-filter="true">
@@ -15,8 +18,7 @@
     <th>180 lb</th>
     <th>205 lb</th>
     <th>1 lb</th>
-    <th>Time to Exercise</th>
-    <th>operations</th>
+    <th>Time to Exercise (Hours)</th>
   </thead>
   <tbody>
     <tr ng-repeat="sports in sport | filter:searchSportContent">
@@ -26,7 +28,7 @@
       <td>{{ sports["180 lb"] }}</td>
       <td>{{ sports["205 lb"] }}</td>
       <td>{{ sports["1 lb"] }}</td>
-      <td>{{ 2000/(sports["1 lb"]*100) }}</td>
+      <td>{{ 2000/(sports["1 lb"]*setForWeight) }}</td>
     </tr>
   </tbody>
 </table>
