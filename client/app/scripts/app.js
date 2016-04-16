@@ -12,7 +12,8 @@ angular
   .module('clientApp', [
     'ngCookies',
     'ngRoute',
-    'restangular'
+    'restangular',
+    'ngTable'
   ])
   .config(function ($routeProvider, RestangularProvider) {
     $routeProvider
@@ -33,8 +34,12 @@ angular
       })
       .when('/sport', {
         templateUrl: 'views/sport.html',
-        controller: 'SportCtrl',
-        controllerAs: 'sport'
+        controller: 'SportCtrl'
+      })
+      .when('/sport-view', {
+        templateUrl: 'views/sport-view.html',
+        controller: 'SportViewCtrl',
+        controllerAs: 'sportView'
       })
       .otherwise({
         redirectTo: '/'
@@ -61,6 +66,6 @@ angular
     });
   });
 })
-.factory('Sport', function(MovieRestangular) {
+.factory('Sport', function(SportRestangular) {
   return SportRestangular.service('sport');
 });

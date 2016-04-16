@@ -10,4 +10,5 @@
 angular.module('clientApp')
   .controller('SportCtrl', function ($scope, Sport) {
     $scope.sport = Sport.getList().$object;
+  
   });
