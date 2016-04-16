@@ -1,4 +1,4 @@
-angular.module('app', []).controller('searchFoodController'
+angular.module('app').controller('searchFoodController'
     , function ($scope) {
         $scope.Product = [{
             id: 1

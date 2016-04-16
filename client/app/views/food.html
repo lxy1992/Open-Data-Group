@@ -1,8 +1,6 @@
 <p>This is the food view.</p>
 
-
-
-<div ng-controller='InstantSearchCtrl'>
+<!--div ng-controller='InstantSearchCtrl'>
     <input type='text' placeholder="Type the food name to search" value='' ng-model="query">
     <ul ng-repeat='item in results.list.item'>
         <li>{{item}}<input value="add" type="submit" ng-click="getDetail(item.ndbno)"></button></li>
@@ -10,6 +8,145 @@
     <ul ng-repeat="item in list">
         <li>{{item}}</li>
     </ul>
-</div>
+</div-->
+<div ng-controller='FoodCtrl'>
+    <div class="container">
+        <div class="jumbotron">
+            <center>
+                <h1>HealthCal</h1>
+                <h4>Your Personal Calory Calculator</h4>
+                <!--    <a class="btn btn-primary" href="#">Learn more</a></center>-->
+                <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Search Food</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h3 class="modal-title">Search Food</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!--Search bar-->
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <form action="#" method="get">
+                                                        <div class="input-group">
+                                                            <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+                                                            <input class="form-control" ng-model="query" id="system-search" name="q" placeholder="Search for" required>
+                                                            <span class="input-group-btn">
+                                                                <button type="submit" class="btn btn-default">
+                                                                    <i class="glyphicon glyphicon-search"></i> 
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </form>
+                                                </div>
 
+                                                <div class="col-md-9">
+                                                    <table class="table table-list-search">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="id">ID</th>
+                                                                <th class="group">Group</th>
+                                                                <th class="food">Food</th>
+                                                                <th class="action">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="item in results.list.item">
+                                                                <td class="id">{{item.ndbno}}</td>
+                                                                <td class="group">{{item.group}}</td>
+                                                                <td class="food">{{item.name}}</td>
+                                                                <td class="action">
+                                                                    <a class="btn btn-primary btn-sm" ng-click="addItem(item.ndbno)"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <!-- Cart Item -->
+
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Description</th>
+                                        <th>Energy Per 100g(kCal)</th>
+                                        <th>Quantity</th>
+                                        <th>Measure</th>
+                                        <th>Total Energy(kCal)</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in Product">
+                                        <td>{{item.id}}</td>
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.nutrients["Energy"].value}}</td>
+                                        <td class="form-inline">
+                                            <button type="button" class="btn btn-defualt glyphicon glyphicon-minus" ng-click="reduce($index)"></button>
+                                            <input type="text" name="" class="form-control" value="1" ng-model="item.quantity">
+                                            <button type="button" class="btn btn-defualt glyphicon glyphicon-plus" ng-click="add($index)"></button>
+                                        </td>  
+                                        <td>
+                                            <select class="form-control"  ng-model="item.measure">
+                                                <option selected="true" value ='g'>g</option>
+                                                <option ng-repeat="name in item.nutrients['Energy'].measureNames" value="{{name}}">
+                                                    {{name}} ({{item.nutrients['Energy'].measures[name].eqv}}g)
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td>{{item.quantity * item.nutrients["Energy"].measures[item.measure].value}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" ng-click="remove($index)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5"></td>
+                                        <td style="font-size:20px;">Total energy：{{totalEnergy()}} </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" ng-click="removeall()">Delete All</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 pull-right">
+                <div>
+                    <button href="#top" id="backToTopBtn" class="btn btn-default">
+                        <span class="glyphicon glyphicon-chevron-up"></span> Top
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
