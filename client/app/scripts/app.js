@@ -15,7 +15,8 @@ angular
     'restangular',
     'ngTable'
   ])
-  .config(function ($routeProvider, RestangularProvider) {
+  .constant('NDB_KEY', 'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7')
+  .config(function ($routeProvider, $httpProvider, RestangularProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -29,8 +30,7 @@ angular
       })
       .when('/food', {
         templateUrl: 'views/food.html',
-        controller: 'FoodCtrl',
-        controllerAs: 'food'
+        controller: 'FoodCtrl'
       })
       .when('/sport', {
         templateUrl: 'views/sport.html',
@@ -44,26 +44,60 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  }).factory('FoodRestangular', function(Restangular) {
+  })
+  /*.factory('NDB', function ($resource) {
+    return $resource('http://api.nal.usda.gov/ndb/:func', {
+      api_key : 'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7',
+      format : 'json'
+    } , {
+      search : {
+        method : "GET",
+        params : {
+          func : 'search',
+          api_key : 'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7',
+          format : 'json'
+        }
+      }
+    });
+  })*/
+  .factory('FoodRestangular', function(Restangular) {
     return Restangular.withConfig(function(RestangularConfigurer) {
       //RestangularConfigurer.setBaseUrl('http://localhost:3000');
       RestangularConfigurer.setBaseUrl('http://api.nal.usda.gov/ndb/');
       RestangularConfigurer.setResponseInterceptor(
       function(data, operation, what) {
-        console.log(data);
         return [data];
+      });
+      RestangularConfigurer.setErrorInterceptor(function(response, deferred, responseHandler) {
+        if(response.status === 404) {
+            return false; // error handled
+        }
+        return true; // error not handled
+      });
+      RestangularConfigurer.setResponseExtractor(function(response) {
+        var newResponse = response;
+        if (angular.isArray(response)) {
+          angular.forEach(newResponse, function(value, key) {
+            newResponse[key].originalElement = angular.copy(value);
+          });
+        } else {
+          newResponse.originalElement = angular.copy(response);
+        }
+      
+        return newResponse;
       });
     });
   })
-  .factory('Food', function(FoodRestangular) {
+  .factory('Search', function(FoodRestangular) {
     return FoodRestangular.service('search');
+  })
+  .factory('Food', function(FoodRestangular) {
+    return FoodRestangular.service('reports');
   })
   .factory('SportRestangular', function(Restangular) {
   return Restangular.withConfig(function(RestangularConfigurer) {
     RestangularConfigurer.setBaseUrl('http://localhost:3000');
-    RestangularConfigurer.setRestangularFields({
-      id: '_id'
-    });
+
   });
 })
 .factory('Sport', function(SportRestangular) {

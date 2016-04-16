@@ -1,10 +1,15 @@
 <p>This is the food view.</p>
-<form method='get' action='localhost:9000/#/food'>
-    <input name='name'type='text'>
-    <input type='submit' value='Search'>
-</form>
 
 
-<p ng-repeat="food in foods">
-{{food}}
-</p>
+
+<div ng-controller='InstantSearchCtrl'>
+    <input type='text' placeholder="Type the food name to search" value='' ng-model="query">
+    <ul ng-repeat='item in results.list.item'>
+        <li>{{item}}<input value="add" type="submit" ng-click="getDetail(item.ndbno)"></button></li>
+    </ul>
+    <ul ng-repeat="item in list">
+        <li>{{item}}</li>
+    </ul>
+</div>
+
+
