@@ -54,12 +54,14 @@ angular.module('clientApp')
                     eqv: 1
                 }
                 n.measures.forEach(function(m){
-                    model.nutrients[n.name].measureNames.push(m.label);
-                    model.nutrients[n.name].measures[m.label] = {
-                        name: m.label,
-                        //ndb value is string format, transfer to float
-                        value: parseFloat(m.value),
-                        eqv: m.eqv
+                    if (m.qty === 1) {
+                        model.nutrients[n.name].measureNames.push(m.label);
+                        model.nutrients[n.name].measures[m.label] = {
+                            name: m.label,
+                            //ndb value is string format, transfer to float
+                            value: parseFloat(m.value),
+                            eqv: m.eqv
+                        }
                     }
                 });
             });
