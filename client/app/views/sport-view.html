@@ -8,15 +8,17 @@
     <th>180 lb</th>
     <th>205 lb</th>
     <th>1 lb</th>
+    <th>Time to Exercise</th>
   </thead>
   <tbody>
-    <tr ng-repeat="sports in sport | filter:searchSportContent">
-      <td>{{ sports["Activity(1 hour)"] }}</td>
-      <td sortable="'130 lb'">{{ sports["130 lb"] }}</td>
-      <td>{{ sports["155 lb"] }}</td>
-      <td>{{ sports["180 lb"] }}</td>
-      <td>{{ sports["205 lb"] }}</td>
-      <td>{{ 2000/(sports["1 lb"]*100) }}</td>
+    <tr >
+      <td>{{ sport["Activity(1 hour)"] }}</td>
+      <td sortable="'130 lb'">{{ sport["130 lb"] }}</td>
+      <td>{{ sport["155 lb"] }}</td>
+      <td>{{ sport["180 lb"] }}</td>
+      <td>{{ sport["205 lb"] }}</td>
+      <td>{{ sport["1 lb"] }}</td>
+      <td>{{ 2000/(sport["1 lb"]*100) }}</td>
     </tr>
   </tbody>
 </table>

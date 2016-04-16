@@ -36,10 +36,9 @@ angular
         templateUrl: 'views/sport.html',
         controller: 'SportCtrl'
       })
-      .when('/sport-view', {
+      .when('/sport/:id', {
         templateUrl: 'views/sport-view.html',
-        controller: 'SportViewCtrl',
-        controllerAs: 'sportView'
+        controller: 'SportViewCtrl'
       })
       .otherwise({
         redirectTo: '/'

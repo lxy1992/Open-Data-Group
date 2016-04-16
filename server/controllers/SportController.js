@@ -15,7 +15,7 @@ module.exports = function(app, route) {
     next();
   };
 };
-module.exports = function(app, route){
+/** module.exports = function(app, route){
   var query={};
   if(app.query.m2) {
     query['name']=new RegExp(app.query.m2);//模糊查询参数
@@ -24,4 +24,4 @@ module.exports = function(app, route){
   Movie.findByName (query,function(err, list){
     return res.render('/sport', {sportList:list});
   });
-};
+}; **/

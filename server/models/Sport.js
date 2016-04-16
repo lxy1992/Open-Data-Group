@@ -30,10 +30,10 @@ var SportSchema = new mongoose.Schema({
 
 // Export the model.
 module.exports = mongoose.model('sport',SportSchema,'sports');
-var SportDAO = function(){};
+/**var SportDAO = function(){};
 SportDAO.prototype.findByName = function(query, callback){
   sport.findOne(query, function(err, obj){
     callback(err, obj)
   });
 };
-module.exports = new SportDAO();
+module.exports = new SportDAO();**/
