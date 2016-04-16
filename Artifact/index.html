@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>HealthCal</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- custom css -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <a class="navbar-brand" id="top">
+                HealthCal</a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse navHeaderCollapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="jumbotron">
+            <center>
+                <h1>HealthCal</h1>
+                <h4>Your Personal Calory Calculator</h4>
+                <!--	<a class="btn btn-primary" href="#">Learn more</a></center>-->
+                <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Search Food</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h3 class="modal-title">Search Food</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!--Search bar-->
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <form action="#" method="get">
+                                                        <div class="input-group">
+                                                            <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+                                                            <input class="form-control" id="system-search" name="q" placeholder="Search for" required>
+                                                            <span class="input-group-btn"><button type="submit" class="btn btn-default">
+                                                                            <i class="glyphicon glyphicon-search"></i>
+                                                                        </button></span>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                                <div class="col-md-9">
+                                                    <table class="table table-list-search">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="id">ID</th>
+                                                                <th class="food">Food</th>
+                                                                <th class="action">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="id">1</td>
+                                                                <td class="food">Apple</td>
+                                                                <td class="action">
+                                                                    <a href="#" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <!-- Cart Item -->
+
+                        <div ng-controller="itemController">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Per Energy</th>
+                                        <th>Unit</th>
+                                        <th>Total Energy</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in Product">
+                                        <td>{{item.id}}</td>
+                                        <td>{{item.name}}</td>
+                                        <td class="form-inline">
+                                            <button type="button" class="btn btn-defualt glyphicon glyphicon-minus" ng-click="reduce($index)"></button>
+                                            <input type="text" name="" class="form-control" value="" placeholder="" ng-model="item.quantity">
+                                            <button type="button" class="btn btn-defualt glyphicon glyphicon-plus" ng-click="add($index)"></button>
+                                        </td>
+                                        <td>{{item.energy}}</td>
+                                        <td>
+                                            <select class="form-control">
+                                                <option value="one">Kg</option>
+                                                <option value="two">L</option>
+                                                <option value="three">Tank</option>
+                                            </select>
+                                        </td>
+                                        <td>{{item.quantity*item.energy}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" ng-click="remove($index)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5"></td>
+                                        <td style="font-size:20px;">Total energy：{{totalEnergy()}} </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" ng-click="removeall()">Delete All</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 pull-right">
+                <div>
+                    <button href="#top" id="backToTopBtn" class="btn btn-default">
+                        <span class="glyphicon glyphicon-chevron-up"></span> Top
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js "></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js "></script>
+    <script src="http://cdn.bootcss.com/angular.js/1.4.0-rc.2/angular.min.js"></script>
+    <script src="js/backToTopBtn.js"></script>
+    <script src="js/searchFilter.js"></script>
+    <script src="js/cartItem.js"></script>
+    <script src="js/searchFood.js"></script>
+    <!--  back to top-->
+</body>
+
+<div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <p class="navbar-text pull-right">&copy; HealthCal Team</p>
+    </div>
+</div>
+
+</html>
