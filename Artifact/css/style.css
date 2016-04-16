@@ -1,0 +1,67 @@
+ body {
+     margin-bottom: 80px;
+     background-color: #167AC6;
+     font-size: 1.6em;
+ }
+ 
+ .page-header {
+     margin-top: 0
+ }
+ 
+ .panel-body {
+     padding-top: 0
+ }
+ 
+ .featureImg {
+     margin-bottom: 10px;
+ }
+ 
+ .insertedImg {
+     margin: auto;
+     clear: both;
+     display: block;
+     align-self: center;
+     width: 45%;
+ }
+ 
+ h6 {
+     text-align: center;
+ }
+ 
+ aside {
+     margin: auto;
+     font-size: 1em;
+     background-color: antiquewhite;
+     width: 60%;
+ }
+ 
+ .newinsertedImg {
+     margin: auto;
+     clear: both;
+     display: block;
+     align-self: center;
+     width: 80%;
+ }
+ /*-----------------------------------  
+	Modal
+-----------------------------------*/
+ 
+ body.modal-open #wrap {
+     -webkit-filter: blur(7px);
+     -moz-filter: blur(15px);
+     -o-filter: blur(15px);
+     -ms-filter: blur(15px);
+     filter: blur(15px);
+ }
+ 
+ .modal-backdrop {
+     background: #f7f7f7;
+ }
+ 
+ .close {
+     font-size: 30px;
+     display: block;
+ }
+ /*-----------------------------------  
+	Cart Item
+-----------------------------------*/
