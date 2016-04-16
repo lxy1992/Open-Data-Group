@@ -1,4 +1,4 @@
- angular.module('app', []).controller('itemController'
+ angular.module('app', []).controller('cartController'
      , function ($scope) {
          $scope.Product = [{
              id: 1
