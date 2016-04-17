@@ -1,57 +1,57 @@
 <div ng-controller='FoodCtrl'>
-   <div>
-    <div class="container">
-        <div class="jumbotron">
-            <center>
-                <h1>HealthCal</h1>
-                <h4>Your Personal Calory Calculator</h4>
-                <!--    <a class="btn btn-primary" href="#">Learn more</a></center>-->
-                <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Search Food</button>
-            </center>
+    <div>
+        <div class="container">
+            <div class="jumbotron">
+                <center>
+                    <h1>HealthCal</h1>
+                    <h4>Your Personal Calory Calculator</h4>
+                    <!--    <a class="btn btn-primary" href="#">Learn more</a></center>-->
+                    <button type="button" class="btn btn-success " data-toggle="modal" data-target="#myModal">Search Food</button>
+                </center>
+            </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <!-- Modal -->
-                        <div id="myModal" class="modal fade" role="dialog">
-                            <div class="modal-dialog modal-lg">
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h3 class="modal-title">Search Food</h3>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!--Search bar-->
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <form action="#" method="get">
-                                                        <div class="input-group">
-                                                            <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
-                                                            <input class="form-control" ng-model="query" id="system-search" name="q" placeholder="Search for" required>
-                                                            <span class="input-group-btn">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <!-- Modal -->
+                            <div id="myModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h3 class="modal-title">Search Food</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!--Search bar-->
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <form action="#" method="get">
+                                                            <div class="input-group">
+                                                                <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+                                                                <input class="form-control" ng-model="query" id="system-search" name="q" placeholder="Please Enter Food Name" required>
+                                                                <span class="input-group-btn">
                                                                 <button type="submit" class="btn btn-default">
                                                                     <i class="glyphicon glyphicon-search"></i>
                                                                 </button>
                                                             </span>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
 
-                                                <div class="col-md-9">
-                                                    <table ng-table="searchTableParams" class="table table-list-search">
-                                                        <tr ng-repeat="item in $data">
-                                                            <td data-title="'Group'">{{item.group}}</td>
-                                                            <td data-title="'Food'">{{item.name}}</td>
-                                                            <td data-title="'Action'" class="action">
-                                                                <a class="btn btn-primary btn-sm" ng-click="addItem(item.ndbno)"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
-                                                            </td>
-                                                        </tr>
-                                                        <!--thead>
+                                                    <div class="col-md-9">
+                                                        <table ng-table="searchTableParams" class="table table-list-search">
+                                                            <tr ng-repeat="item in $data">
+                                                                <td data-title="'Group'">{{item.group}}</td>
+                                                                <td data-title="'Food'">{{item.name}}</td>
+                                                                <td data-title="'Action'" class="action">
+                                                                    <a class="btn btn-primary btn-sm" ng-click="addItem(item.ndbno)"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
+                                                                </td>
+                                                            </tr>
+                                                            <!--thead>
                                                             <tr>
                                                                 <th class="id">ID</th>
                                                                 <th class="group">Group</th>
@@ -69,128 +69,118 @@
                                                                 </td>
                                                             </tr>
                                                         </tbody-->
-                                                    </table>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Modal -->
-                        <!-- Cart Item -->
+                            <!-- Modal -->
+                            <!-- Cart Item -->
 
-                        <div>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Name</th>
-                                        <th>Energy Per 100g(kCal)</th>
-                                        <th>Quantity</th>
-                                        <th>Measure</th>
-                                        <th>Total Energy(kCal)</th>
-                                        <th>Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="item in Product">
-                                        <td>{{$index+1}}</td>
-                                        <td>{{item.name}}</td>
-                                        <td>{{item.nutrients["Energy"].value.toFixed(2)}}</td>
-                                        <td class="form-inline">
-                                            <button type="button" class="btn btn-defualt glyphicon glyphicon-minus" ng-click="reduce($index)"></button>
-                                            <input type="text" name="" class="form-control" value="1" ng-model="item.quantity">
-                                            <button type="button" class="btn btn-defualt glyphicon glyphicon-plus" ng-click="add($index)"></button>
-                                        </td>
-                                        <td>
-                                            <select class="form-control"  ng-model="item.measure">
-                                                <option selected="true" value ='g'>g</option>
-                                                <option ng-repeat="name in item.nutrients['Energy'].measureNames" value="{{name}}">
-                                                    {{name}} ({{item.nutrients['Energy'].measures[name].eqv}}g)
-                                                </option>
-                                            </select>
-                                        </td>
-                                        <td>{{(item.quantity * item.nutrients["Energy"].measures[item.measure].value).toFixed(2)}}</td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger" ng-click="remove($index)">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="5"></td>
-                                        <td style="font-size:20px;">Total energy：{{totalEnergy().toFixed(2)}} </td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger" ng-click="removeall()">Delete All</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-<!--                    ==============Visualisation PieChart For Food Calories==============    -->
-                        <div id="caloryPiechart" class="col-md-12">
-                            
+                            <div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Name</th>
+                                            <th>Energy Per 100g(kCal)</th>
+                                            <th>Quantity</th>
+                                            <th>Measure</th>
+                                            <th>Total Energy(kCal)</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in Product">
+                                            <td>{{$index+1}}</td>
+                                            <td>{{item.name}}</td>
+                                            <td>{{item.nutrients["Energy"].value.toFixed(2)}}</td>
+                                            <td class="form-inline">
+                                                <button type="button" class="btn btn-defualt glyphicon glyphicon-minus" ng-click="reduce($index)"></button>
+                                                <input type="text" name="" class="form-control" value="1" ng-model="item.quantity">
+                                                <button type="button" class="btn btn-defualt glyphicon glyphicon-plus" ng-click="add($index)"></button>
+                                            </td>
+                                            <td>
+                                                <select class="form-control" ng-model="item.measure">
+                                                    <option selected="true" value='g'>g</option>
+                                                    <option ng-repeat="name in item.nutrients['Energy'].measureNames" value="{{name}}">
+                                                        {{name}} ({{item.nutrients['Energy'].measures[name].eqv}}g)
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>{{(item.quantity * item.nutrients["Energy"].measures[item.measure].value).toFixed(2)}}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" ng-click="remove($index)">Delete</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5"></td>
+                                            <td style="font-size:20px;">Total energy：{{totalEnergy().toFixed(2)}} </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" ng-click="removeall()">Delete All</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--                    ==============Visualisation PieChart For Food Calories==============    -->
+                            <div id="caloryPiechart" class="col-md-12">
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-8">
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-1 pull-right">
-                <div>
-                    <button href="#top" id="backToTopBtn" class="btn btn-default">
-                        <span class="glyphicon glyphicon-chevron-up"></span> Top
-                    </button>
+                <div class="col-lg-8">
                 </div>
             </div>
         </div>
+
+
     </div>
-</div>
-<div ng-controller='SportCtrl'>
-    <div class="container">
-    <p>Search and select the sport you want to do.</p>
-    <label for="title" class="control-label">Sport Title</label>
-    <form name="searchForm" novalidate ng-submit="applyGlobalSearch()">
-            <div class="input-group">
-              <span class="input-group-addon">Except for...
+    <div ng-controller='SportCtrl'>
+        <div class="container">
+            <center>
+                <h3>Search and Select the Sport You Want</h3></center>
+            <!--            <label for="title" class="control-label">Sport Title</label>-->
+            <form name="searchForm" novalidate ng-submit="applyGlobalSearch()">
+                <div class="input-group">
+                    <span class="input-group-addon">Except for
                 <input type="checkbox" name="inverted" ng-model="isInvertedSearch" />
               </span>
-              <input type="text" class="form-control" placeholder="Search term" name="searchTerm" ng-model="globalSearchTerm" required />
-              <!--span class="input-group-btn">
+                    <input type="text" class="form-control" placeholder="Please Enter Sport Name" name="searchTerm" ng-model="globalSearchTerm" required />
+                    <!--span class="input-group-btn">
                 <button class="btn btn-default" type="submit" ng-disabled="searchForm.$invalid">
                   <span class="glyphicon glyphicon-search"></span>
               </button>
               </span-->
-            </div>
-    </form>
+                </div>
+            </form>
 
 
-    <input type="Number" class="form-control" ng-model="setForWeight" id="user weight" placeholder="Weight"></input>
-    <!-- <button type="submit" class="btn btn-primary" ng-click="setWeight(setForWeight)" value="submit">Calculate</button> -->
+            <input type="Number" class="form-control" ng-model="setForWeight" id="user weight" placeholder="Please Enter Your Weight (llb)">
+            <!-- <button type="submit" class="btn btn-primary" ng-click="setWeight(setForWeight)" value="submit">Calculate</button> -->
 
 
-<!-- <p><strong>Page:</strong> {{tableParams.page()}}-->
-<!-- <p><strong>Count per page:</strong> {{tableParams.count()}}-->
+            <!-- <p><strong>Page:</strong> {{tableParams.page()}}-->
+            <!-- <p><strong>Count per page:</strong> {{tableParams.count()}}-->
 
-    <table ng-table="tableParams" class="table table-striped" show-filter="true">
-        <tr ng-repeat="sports in $data ">
-            <td data-title="'Activity(1 Hour)'">{{sports["Activity(1 hour)"]}}</td>
-            <td data-title="'130 lb'">{{ sports["130 lb"] }}</td>
-            <td data-title="'155 lb'">{{ sports["155 lb"] }}</td>
-            <td data-title="'180 lb'">{{ sports["180 lb"] }}</td>
-            <td data-title="'205 lb'">{{ sports["205 lb"] }}</td>
-            <td data-title="'1 lb'" >{{ sports["1 lb"] }}</td>
-            <td data-title="'Time to Exercise (Hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
-        </tr>
-    </table>
+            <table ng-table="tableParams" class="table table-striped" show-filter="true">
+                <tr ng-repeat="sports in $data ">
+                    <td data-title="'Activity(1 Hour)'">{{sports["Activity(1 hour)"]}}</td>
+                    <td data-title="'130 lb'">{{ sports["130 lb"] }}</td>
+                    <td data-title="'155 lb'">{{ sports["155 lb"] }}</td>
+                    <td data-title="'180 lb'">{{ sports["180 lb"] }}</td>
+                    <td data-title="'205 lb'">{{ sports["205 lb"] }}</td>
+                    <td data-title="'1 lb'">{{ sports["1 lb"] }}</td>
+                    <td data-title="'Time to Exercise (Hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
-</div>
-
