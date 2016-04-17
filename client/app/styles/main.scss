@@ -21,12 +21,13 @@ body {
 
 .header {
     /* Make the masthead heading the same height as the navigation */
-    h3 {
-        margin-top: 0;
-        margin-bottom: 0;
-        line-height: 40px;
-        padding-bottom: 19px;
-    }
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 25px;
 }
 
 
@@ -45,6 +46,7 @@ body {
 
 .table td {
     text-align: center;
+    word-break: break-all;
 }
 
 .table th {
@@ -52,12 +54,9 @@ body {
 }
 
 .select-unit {
-    width: 50%
+    width: 80%;
 }
 
-//.enter-quantity {
-//    width: auto;
-//}
 
 /* Modal */
 

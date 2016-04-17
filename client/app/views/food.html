@@ -1,6 +1,6 @@
 <div ng-controller='FoodCtrl'>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="jumbotron">
             <center>
                 <h1>HealthCal</h1>
@@ -10,7 +10,7 @@
             </center>
         </div>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -26,9 +26,9 @@
                                     </div>
                                     <div class="modal-body">
                                         <!--Search bar-->
-                                        <div class="container">
+                                        <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-12">
                                                     <form action="#" method="get">
                                                         <div class="input-group">
                                                             <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
@@ -42,12 +42,12 @@
                                                     </form>
                                                 </div>
 
-                                                <div class="col-md-9">
+                                                <div class="col-md-12">
                                                     <table ng-table="searchTableParams" class="table table-list-search">
                                                         <tr ng-repeat="item in $data">
-                                                            <td data-title="'Group'">{{item.group}}</td>
-                                                            <td data-title="'Food'">{{item.name}}</td>
-                                                            <td data-title="'Action'" class="action">
+                                                            <td class="col-md-3" data-title="'Group'">{{item.group}}</td>
+                                                            <td class="col-md-8" data-title="'Food'">{{item.name}}</td>
+                                                            <td class="col-md-1" data-title="'Action'">
                                                                 <a class="btn btn-primary btn-sm" ng-click="addItem(item.ndbno)"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
                                                             </td>
                                                         </tr>
@@ -86,13 +86,13 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Name</th>
-                                    <th>Energy Per 100g(kCal)</th>
-                                    <th>Quantity</th>
-                                    <th>Measure</th>
-                                    <th>Total Energy(kCal)</th>
-                                    <th>Delete</th>
+                                    <th class="col-md-1">No.</th>
+                                    <th class="col-md-3">Name</th>
+                                    <th class="col-md-1">Energy Per 100g(kCal)</th>
+                                    <th class="col-md-3"> Quantity</th>
+                                    <th class="col-md-1">Measure</th>
+                                    <th class="col-md-2">Total Energy(kCal)</th>
+                                    <th class="col-md-1">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -124,7 +124,9 @@
                                 </tr>
                                 <tr>
                                     <td colspan="5"></td>
-                                    <td style="font-size:20px;"><strong>Total energy：</strong> {{totalEnergy().toFixed(2)}} </td>
+                                    <td style="font-size:20px;">
+                                        <center><strong>Total Energy：<br></strong> {{totalEnergy().toFixed(2)}} </center>
+                                    </td>
                                     <td>
                                         <button type="button" class="btn btn-danger" ng-click="removeall()">Delete All</button>
                                     </td>
@@ -158,13 +160,13 @@
 
 
 <div ng-controller='SportCtrl'>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
 
-                        <div class="container">
+                        <div class="container-fluid">
                             <center>
                                 <h3>Search Sport You Want and Enter Your Weight</h3></center>
                             <!--            <label for="title" class="control-label">Sport Title</label>-->
@@ -175,7 +177,7 @@
                                 <div class="col-md-5">
                                     <form name="searchForm" novalidate ng-submit="applyGlobalSearch()">
                                         <div class="input-group">
-                                            <span class="input-group-addon">Except for
+                                            <span class="input-group-addon">Except For
                 <input type="checkbox" name="inverted" ng-model="isInvertedSearch" />
               </span>
                                             <input type="text" class="form-control" placeholder="Please Enter Sport Name" name="searchTerm" ng-model="globalSearchTerm" required />
@@ -199,17 +201,19 @@
                                 <!-- <p><strong>Page:</strong> {{tableParams.page()}}-->
                                 <!-- <p><strong>Count per page:</strong> {{tableParams.count()}}-->
                             </div>
-                            <table ng-table="tableParams" class="table table-striped" show-filter="true">
+
+                            <table ng-table="tableParams" class="table table-list-search">
                                 <tr ng-repeat="sports in $data ">
-                                    <td data-title="'Activity(1 Hour)'">{{sports["Activity(1 hour)"]}}</td>
-                                    <td data-title="'130 lb'">{{ sports["130 lb"] }}</td>
-                                    <td data-title="'155 lb'">{{ sports["155 lb"] }}</td>
-                                    <td data-title="'180 lb'">{{ sports["180 lb"] }}</td>
-                                    <td data-title="'205 lb'">{{ sports["205 lb"] }}</td>
-                                    <td data-title="'1 lb'">{{ sports["1 lb"] }}</td>
-                                    <td data-title="'Time to Exercise (Hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
+                                    <td class="col-md-4" data-title="'Activity(1 Hour)'">{{sports["Activity(1 hour)"]}}</td>
+                                    <td class="col-md-1" data-title="'130 lb'">{{ sports["130 lb"] }}</td>
+                                    <td class="col-md-1" data-title="'155 lb'">{{ sports["155 lb"] }}</td>
+                                    <td class="col-md-1" data-title="'180 lb'">{{ sports["180 lb"] }}</td>
+                                    <td class="col-md-1" data-title="'205 lb'">{{ sports["205 lb"] }}</td>
+                                    <td class="col-md-2" data-title="'1 lb'">{{ sports["1 lb"] }}</td>
+                                    <td class="col-md-2" data-title="'Exercising Hours'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
                                 </tr>
                             </table>
+
                         </div>
                     </div>
 
