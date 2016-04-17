@@ -31,6 +31,7 @@ module.exports = function(config) {
       'bower_components/d3/d3.js',
       'bower_components/crossfilter/crossfilter.js',
       'bower_components/dcjs/dc.js',
+      'bower_components/angular-elastic-input/dist/angular-elastic-input.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

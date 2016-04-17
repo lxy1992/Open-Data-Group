@@ -103,7 +103,7 @@
                                             <td>{{item.nutrients["Energy"].value.toFixed(2)}}</td>
                                             <td class="form-inline">
                                                 <button type="button" class="btn btn-defualt glyphicon glyphicon-minus" ng-click="reduce($index)"></button>
-                                                <input type="text" name="" class="form-control" value="1" ng-model="item.quantity">
+                                                <input type="text" name="" class="form-control" value="1" ng-model="item.quantity" pu-elastic-input style="min-width: 30px; max-width: 100px;">
                                                 <button type="button" class="btn btn-defualt glyphicon glyphicon-plus" ng-click="add($index)"></button>
                                             </td>
                                             <td>
