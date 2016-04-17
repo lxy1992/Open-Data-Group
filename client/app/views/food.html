@@ -47,7 +47,7 @@
                                                             <input class="form-control" ng-model="query" id="system-search" name="q" placeholder="Search for" required>
                                                             <span class="input-group-btn">
                                                                 <button type="submit" class="btn btn-default">
-                                                                    <i class="glyphicon glyphicon-search"></i> 
+                                                                    <i class="glyphicon glyphicon-search"></i>
                                                                 </button>
                                                             </span>
                                                         </div>
@@ -110,7 +110,7 @@
                                             <button type="button" class="btn btn-defualt glyphicon glyphicon-minus" ng-click="reduce($index)"></button>
                                             <input type="text" name="" class="form-control" value="1" ng-model="item.quantity">
                                             <button type="button" class="btn btn-defualt glyphicon glyphicon-plus" ng-click="add($index)"></button>
-                                        </td>  
+                                        </td>
                                         <td>
                                             <select class="form-control"  ng-model="item.measure">
                                                 <option selected="true" value ='g'>g</option>
@@ -157,7 +157,21 @@
     <p>Search and select the sport you want to do.</p>
     <label for="title" class="control-label">Sport Title</label>
     <input type="text" class="form-control" ng-model="searchSportContent" id="sport title" placeholder="Sports title"></input>
-    <!-- <button type="submit" class="btn btn-primary" ng-click="searchSport(searchSportContent)" value="search">Search</button> -->
+    
+    <form name="searchForm" novalidate ng-submit="applyGlobalSearch()">
+            <div class="input-group">
+              <span class="input-group-addon">Except for...
+                <input type="checkbox" name="inverted" ng-model="isInvertedSearch" />
+              </span>
+              <input type="text" class="form-control" placeholder="Search term" name="searchTerm" ng-model="globalSearchTerm" required />
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" ng-disabled="searchForm.$invalid">
+                  <span class="glyphicon glyphicon-search"></span>
+              </button>
+              </span>
+            </div>
+    </form>
+     <button type="submit" class="btn btn-primary" ng-click="searchSport(searchSportContent)" value="search">Search</button> 
 
     <input type="Number" class="form-control" ng-model="setForWeight" id="user weight" placeholder="Weight"></input>
     <!-- <button type="submit" class="btn btn-primary" ng-click="setWeight(setForWeight)" value="submit">Calculate</button> -->
@@ -167,7 +181,16 @@
 <!-- <p><strong>Count per page:</strong> {{tableParams.count()}}-->
 
     <table ng-table="tableParams" class="table table-striped" show-filter="true">
-  <thead>
+    <tr ng-repeat="sports in $data ">
+        <td data-title="'Activity(1 Hour)'">{{sports["Activity(1 hour)"]}}</td>
+        <td data-title="'130 lb'">{{ sports["130 lb"] }}</td>
+        <td data-title="'155 lb'">{{ sports["155 lb"] }}</td>
+        <td data-title="'180 lb'">{{ sports["180 lb"] }}</td>
+        <td data-title="'205 lb'">{{ sports["205 lb"] }}</td>
+        <td data-title="'1 lb'" >{{ sports["1 lb"] }}</td>
+        <td data-title="'Time to Exercise (Hours)'">{{ totalEnergy()/(sports["1 lb"]*setForWeight) }}</td>
+    </tr>
+  <!--thead>
     <th>Activity(1 hour)</th>
     <th>130 lb</th>
     <th>155 lb</th>
@@ -177,7 +200,8 @@
     <th>Time to Exercise (Hours)</th>
   </thead>
   <tbody>
-    <tr ng-repeat="sports in sport | filter:searchSportContent">
+    <tr ng-repeat="sports in $dataset | filter:searchSportContent">
+<!--
       <td><a ng-href="/#/sport/{{ sports._id }}">{{ sports["Activity(1 hour)"] }}</a></td>
       <td sortable="'130 lb'">{{ sports["130 lb"] }}</td>
       <td>{{ sports["155 lb"] }}</td>
@@ -185,10 +209,13 @@
       <td>{{ sports["205 lb"] }}</td>
       <td>{{ sports["1 lb"] }}</td>
       <td>{{ totalEnergy()/(sports["1 lb"]*setForWeight) }}</td>
+
+    <td title="Activity" filter="{{{sports["Activity(1 hour)"]}}: 'String' }" sortable="Activity(1 hour)">
+
+    </td>
     </tr>
-  </tbody>
+  </tbody-->
 </table>
     </div>
 </div>
 </div>
-

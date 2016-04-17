@@ -11,6 +11,10 @@
 <p><strong>Page:</strong> {{tableParams.page()}}
 <p><strong>Count per page:</strong> {{tableParams.count()}}
 <table ng-table="tableParams" class="table table-striped" show-filter="true">
+<tr ng-repeat="sport in $data | filter:searchSportContent">
+    <td title="'130 lb'">{{ sport["155 lb"] }}</td>
+</tr>
+<!--
   <thead>
     <th>Activity(1 hour)</th>
     <th>130 lb</th>
@@ -31,6 +35,7 @@
       <td>{{ 2000/(sports["1 lb"]*setForWeight) }}</td>
     </tr>
   </tbody>
+-->
 </table>
   <script src="bower_components/ng-table/dist/ng-table.js"></script>
 </body>
