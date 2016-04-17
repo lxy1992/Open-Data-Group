@@ -10,6 +10,7 @@
 angular.module('clientApp')
   .controller('FoodCtrl', function ($scope, Food, Search, NgTableParams) {
     var params = {format:'json', sort:'n','max':25,'offset':0, api_key:'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7'};
+
     $scope.Product = [];
 
     //this.results = Food.getList(params)[0].$object;
@@ -77,11 +78,54 @@ angular.module('clientApp')
             $scope.Product.push(model);
 //            console.log(JSON.stringify(model));
 //            console.log($scope.Product);
+
         })
     };
 
     //$scope.cart = {};
+    $scope.$watch('total', function(oldVal){
+        var data = [];
+        if (oldVal) {
+        $scope.Product.forEach(function(item, index){
+            data.push({
+                name: item.name,
+                y: item.quantity * item.nutrients["Energy"].measures[item.measure].value
+            })
+        });
 
+        $('#highcharts').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Food Carlories Proportion'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.y}({point.percentage:.1f}%)</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Carlories',
+                colorByPoint: true,
+                data: data
+            }]
+        });}
+    })
 
 
     $scope.totalEnergy = function () {
@@ -89,23 +133,28 @@ angular.module('clientApp')
         angular.forEach($scope.Product, function (item) {
             total += item.quantity * item.nutrients["Energy"].measures[item.measure].value;
         });
+        $scope.total = total;
         return total;
     }
 
-    var caloryPie = dc.pieChart('#caloryPiechart');
-    d3.json($scope.Product, function(d){
-        
+    /*var caloryPie = dc.pieChart('#caloryPiechart');
+    //d3.json($scope.Product, function(d){
+    var d = $scope.Product;    
         var cross = crossfilter($scope.Product);
-        var all = cross.groupAll();
+        //var all = cross.groupAll();
+        var all = cross
 //        ===============Pie Chart==================
         var calory = cross.dimension(function(d){
-            angular.forEach(d, function (item) {
+            /*angular.forEach(d, function (item) {
             total = item.quantity * item.nutrients["Energy"].measures[item.measure].value;
             return total;
-            });
+            });/
+            return d.quantity * d.nutrients["Energy"].measures[d.measure].value;
             
         });
         console.log(calory);
+
+
         var caloryGroup = calory.group();
         caloryPie
             .width(300)
@@ -116,12 +165,14 @@ angular.module('clientApp')
 //            .ordinalColors(['#1a45dc', '#e93f65', '#3fe96e', 'gray'])
 //            .colorDomain(["Profit","Loss","Equal","Unknow"])
             .label(function(d) {
-            return (d.key) + "(" + Math.floor(d.value / all.value()) + "%)";
+            return (d.id) //+ "(" + Math.floor(d.value / all.value()) + "%)";
             })
             .innerRadius(30);
-        dc.renderAll();
-    });
+        //dc.renderAll();
+   // });*/
 
+    
+    
 
     $scope.remove = function (index) {
         var ans = confirm("Do you want to remove this item？");
