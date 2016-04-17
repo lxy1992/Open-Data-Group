@@ -153,8 +153,6 @@
     <div class="container">
     <p>Search and select the sport you want to do.</p>
     <label for="title" class="control-label">Sport Title</label>
-    <input type="text" class="form-control" ng-model="searchSportContent" id="sport title" placeholder="Sports title"></input>
-    
     <form name="searchForm" novalidate ng-submit="applyGlobalSearch()">
             <div class="input-group">
               <span class="input-group-addon">Except for...
@@ -168,7 +166,7 @@
               </span>
             </div>
     </form>
-     <button type="submit" class="btn btn-primary" ng-click="searchSport(searchSportContent)" value="search">Search</button> 
+
 
     <input type="Number" class="form-control" ng-model="setForWeight" id="user weight" placeholder="Weight"></input>
     <!-- <button type="submit" class="btn btn-primary" ng-click="setWeight(setForWeight)" value="submit">Calculate</button> -->
@@ -187,31 +185,7 @@
         <td data-title="'1 lb'" >{{ sports["1 lb"] }}</td>
         <td data-title="'Time to Exercise (Hours)'">{{ totalEnergy()/(sports["1 lb"]*setForWeight) }}</td>
     </tr>
-  <!--thead>
-    <th>Activity(1 hour)</th>
-    <th>130 lb</th>
-    <th>155 lb</th>
-    <th>180 lb</th>
-    <th>205 lb</th>
-    <th>1 lb</th>
-    <th>Time to Exercise (Hours)</th>
-  </thead>
-  <tbody>
-    <tr ng-repeat="sports in $dataset | filter:searchSportContent">
-<!--
-      <td><a ng-href="/#/sport/{{ sports._id }}">{{ sports["Activity(1 hour)"] }}</a></td>
-      <td sortable="'130 lb'">{{ sports["130 lb"] }}</td>
-      <td>{{ sports["155 lb"] }}</td>
-      <td>{{ sports["180 lb"] }}</td>
-      <td>{{ sports["205 lb"] }}</td>
-      <td>{{ sports["1 lb"] }}</td>
-      <td>{{ totalEnergy()/(sports["1 lb"]*setForWeight) }}</td>
-
-    <td title="Activity" filter="{{{sports["Activity(1 hour)"]}}: 'String' }" sortable="Activity(1 hour)">
-
-    </td>
-    </tr>
-  </tbody-->
+  
 </table>
     </div>
 </div>
