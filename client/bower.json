@@ -7,7 +7,9 @@
     "angular-cookies": "^1.4.0",
     "angular-route": "^1.4.0",
     "restangular": "^1.5.2",
-    "ng-table": "^0.8.3"
+    "ng-table": "^0.8.3",
+    "d3": "^3.5.16",
+    "dcjs": "dc.js#^1.7.5"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
