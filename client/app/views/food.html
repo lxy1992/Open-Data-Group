@@ -100,7 +100,7 @@
                                     <tr ng-repeat="item in Product">
                                         <td>{{$index+1}}</td>
                                         <td>{{item.name}}</td>
-                                        <td>{{item.nutrients["Energy"].value}}</td>
+                                        <td>{{item.nutrients["Energy"].value.toFixed(2)}}</td>
                                         <td class="form-inline">
                                             <button type="button" class="btn btn-defualt glyphicon glyphicon-minus" ng-click="reduce($index)"></button>
                                             <input type="text" name="" class="form-control" value="1" ng-model="item.quantity">
@@ -114,14 +114,14 @@
                                                 </option>
                                             </select>
                                         </td>
-                                        <td>{{item.quantity * item.nutrients["Energy"].measures[item.measure].value}}</td>
+                                        <td>{{(item.quantity * item.nutrients["Energy"].measures[item.measure].value).toFixed(2)}}</td>
                                         <td>
                                             <button type="button" class="btn btn-danger" ng-click="remove($index)">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="5"></td>
-                                        <td style="font-size:20px;">Total energy：{{totalEnergy()}} </td>
+                                        <td style="font-size:20px;">Total energy：{{totalEnergy().toFixed(2)}} </td>
                                         <td>
                                             <button type="button" class="btn btn-danger" ng-click="removeall()">Delete All</button>
                                         </td>
@@ -183,7 +183,7 @@
             <td data-title="'180 lb'">{{ sports["180 lb"] }}</td>
             <td data-title="'205 lb'">{{ sports["205 lb"] }}</td>
             <td data-title="'1 lb'" >{{ sports["1 lb"] }}</td>
-            <td data-title="'Time to Exercise (Hours)'">{{ totalEnergy()/(sports["1 lb"]*setForWeight) }}</td>
+            <td data-title="'Time to Exercise (Hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
         </tr>
     </table>
     </div>
