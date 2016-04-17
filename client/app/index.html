@@ -25,7 +25,7 @@
 
             <div class="container">
 
-                <a class="navbar-brand" id="top">
+                <a class="navbar-brand">
                 HealthCal</a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -63,25 +63,9 @@
         <div ng-view=""></div>
     </div>
 
-    <!--
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
--->
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-1 pull-right">
-                <div>
-                    <button href="#top" id="backToTopBtn" class="btn btn-default">
-                        <span class="glyphicon glyphicon-chevron-up"></span> Top
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -98,11 +82,21 @@
 
     <!-- Back to Top Button -->
     <script>
-        $('#backToTopBtn').click(function () {
-            $('html,body').animate({
-                scrollTop: 0
-            }, 'slow');
-            return false;
+        $(document).ready(function () {
+            $('body').append('<div id="toTop" class="btn btn-info"><span class="glyphicon glyphicon-chevron-up"></span> Back to Top</div>');
+            $(window).scroll(function () {
+                if ($(this).scrollTop() != 0) {
+                    $('#toTop').fadeIn();
+                } else {
+                    $('#toTop').fadeOut();
+                }
+            });
+            $('#toTop').click(function () {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 600);
+                return false;
+            });
         });
     </script>
 
