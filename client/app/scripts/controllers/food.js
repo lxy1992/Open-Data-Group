@@ -8,7 +8,7 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('FoodCtrl', function ($scope, Food, Search) {
+  .controller('FoodCtrl', function ($scope, Food, Search, NgTableParams) {
     var params = {format:'json', sort:'n','max':25,'offset':0, api_key:'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7'};
     $scope.Product = [];
 
@@ -18,6 +18,14 @@ angular.module('clientApp')
         params.q = oldVal;
       Search.getList(params).then(function(data){
         $scope.results = data.plain()[0].originalElement;
+        
+        $scope.searchTableParams = new NgTableParams({
+          count: 5 //每页显示数量
+        }, {
+            paginationMaxBlocks: 5,
+            paginationMinBlocks: 2,
+            data: $scope.results.list.item
+        });
         //console.log($scope.results);
       });
       
