@@ -19,25 +19,27 @@ angular.module('clientApp')
         $scope.tableParams = new NgTableParams({
             count: 5 //每页显示数量
         }, {
-        paginationMaxBlocks: 5,
-        paginationMinBlocks: 2,
-        data: $scope.sports
-    });
+            paginationMaxBlocks: 5,
+            paginationMinBlocks: 2,
+            data: $scope.sports
+        });
         
         console.log($scope.sports);
 //        $scope.tableParams.reload();
-        $scope.applyGlobalSearch = applyGlobalSearch;
-        function applyGlobalSearch(){
-            console.log("aa");
-            var term = $scope.globalSearchTerm;
-            console.log(term);
-            if ($scope.isInvertedSearch){
-                term = "!" + term;
-            }
-            $scope.tableParams.filter({ "Activity(1 hour)": term });
-        }
     });
+
+    $scope.applyGlobalSearch = function() {
+        var term = $scope.globalSearchTerm;
+        if ($scope.isInvertedSearch){
+            term = "!" + term;
+        }
+        $scope.tableParams.filter({ "Activity(1 hour)": term });
+    }
     
-    
+    $scope.$watch("globalSearchTerm", function(oldVal, newVal){
+        if (oldVal) {
+            $scope.applyGlobalSearch();
+        }
+    })
 
   });
