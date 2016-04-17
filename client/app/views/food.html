@@ -134,53 +134,57 @@
 
                             </div>
                         </div>
+                        <!--                    ==============Visualisation PieChart For Food Calories==============    -->
+                        <div id="caloryPiechart" class="col-md-12">
+                            <div>
+                                <div id="highcharts" class="col-md-12"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                </div>
+
+
             </div>
-        </div>
-
-
-    </div>
-    <div ng-controller='SportCtrl'>
-        <div class="container">
-            <center>
-                <h3>Search and Select the Sport You Want</h3></center>
-            <!--            <label for="title" class="control-label">Sport Title</label>-->
-            <form name="searchForm" novalidate ng-submit="applyGlobalSearch()">
-                <div class="input-group">
-                    <span class="input-group-addon">Except for
+            <div ng-controller='SportCtrl'>
+                <div class="container">
+                    <center>
+                        <h3>Search and Select the Sport You Want</h3></center>
+                    <!--            <label for="title" class="control-label">Sport Title</label>-->
+                    <form name="searchForm" novalidate ng-submit="applyGlobalSearch()">
+                        <div class="input-group">
+                            <span class="input-group-addon">Except for
                 <input type="checkbox" name="inverted" ng-model="isInvertedSearch" />
               </span>
-                    <input type="text" class="form-control" placeholder="Please Enter Sport Name" name="searchTerm" ng-model="globalSearchTerm" required />
-                    <!--span class="input-group-btn">
+                            <input type="text" class="form-control" placeholder="Please Enter Sport Name" name="searchTerm" ng-model="globalSearchTerm" required />
+                            <!--span class="input-group-btn">
                 <button class="btn btn-default" type="submit" ng-disabled="searchForm.$invalid">
                   <span class="glyphicon glyphicon-search"></span>
               </button>
               </span-->
+                        </div>
+                    </form>
+
+
+                    <input type="Number" class="form-control" ng-model="setForWeight" id="user weight" placeholder="Please Enter Your Weight (llb)">
+                    <!-- <button type="submit" class="btn btn-primary" ng-click="setWeight(setForWeight)" value="submit">Calculate</button> -->
+
+
+                    <!-- <p><strong>Page:</strong> {{tableParams.page()}}-->
+                    <!-- <p><strong>Count per page:</strong> {{tableParams.count()}}-->
+
+                    <table ng-table="tableParams" class="table table-striped" show-filter="true">
+                        <tr ng-repeat="sports in $data ">
+                            <td data-title="'Activity(1 Hour)'">{{sports["Activity(1 hour)"]}}</td>
+                            <td data-title="'130 lb'">{{ sports["130 lb"] }}</td>
+                            <td data-title="'155 lb'">{{ sports["155 lb"] }}</td>
+                            <td data-title="'180 lb'">{{ sports["180 lb"] }}</td>
+                            <td data-title="'205 lb'">{{ sports["205 lb"] }}</td>
+                            <td data-title="'1 lb'">{{ sports["1 lb"] }}</td>
+                            <td data-title="'Time to Exercise (Hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
+                        </tr>
+                    </table>
                 </div>
-            </form>
-
-
-            <input type="Number" class="form-control" ng-model="setForWeight" id="user weight" placeholder="Please Enter Your Weight (llb)">
-            <!-- <button type="submit" class="btn btn-primary" ng-click="setWeight(setForWeight)" value="submit">Calculate</button> -->
-
-
-            <!-- <p><strong>Page:</strong> {{tableParams.page()}}-->
-            <!-- <p><strong>Count per page:</strong> {{tableParams.count()}}-->
-
-            <table ng-table="tableParams" class="table table-striped" show-filter="true">
-                <tr ng-repeat="sports in $data ">
-                    <td data-title="'Activity(1 Hour)'">{{sports["Activity(1 hour)"]}}</td>
-                    <td data-title="'130 lb'">{{ sports["130 lb"] }}</td>
-                    <td data-title="'155 lb'">{{ sports["155 lb"] }}</td>
-                    <td data-title="'180 lb'">{{ sports["180 lb"] }}</td>
-                    <td data-title="'205 lb'">{{ sports["205 lb"] }}</td>
-                    <td data-title="'1 lb'">{{ sports["1 lb"] }}</td>
-                    <td data-title="'Time to Exercise (Hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
-                </tr>
-            </table>
+            </div>
         </div>
-    </div>
-</div>
