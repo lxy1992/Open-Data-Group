@@ -18,7 +18,7 @@ angular.module('clientApp')
         params.q = oldVal;
       Search.getList(params).then(function(data){
         $scope.results = data.plain()[0].originalElement;
-        
+
         $scope.searchTableParams = new NgTableParams({
           count: 5 //每页显示数量
         }, {
@@ -28,7 +28,7 @@ angular.module('clientApp')
         });
         //console.log($scope.results);
       });
-      
+
       $scope.a = {a:[1,2,3]}
       //$scope.results = $scope.results[0].list.item;
     });
@@ -75,13 +75,14 @@ angular.module('clientApp')
             });
             model.energy = model.nutrients['Energy'].value/100;
             $scope.Product.push(model);
-            console.log($scope.Product);
+//            console.log(JSON.stringify(model));
+//            console.log($scope.Product);
         })
     };
 
     //$scope.cart = {};
 
-    
+
 
     $scope.totalEnergy = function () {
         var total = 0;
@@ -90,6 +91,36 @@ angular.module('clientApp')
         });
         return total;
     }
+
+    var caloryPie = dc.pieChart('#caloryPiechart');
+    d3.json($scope.Product, function(d){
+        
+        var cross = crossfilter($scope.Product);
+        var all = cross.groupAll();
+//        ===============Pie Chart==================
+        var calory = cross.dimension(function(d){
+            angular.forEach(d, function (item) {
+            total = item.quantity * item.nutrients["Energy"].measures[item.measure].value;
+            return total;
+            });
+            
+        });
+        console.log(calory);
+        var caloryGroup = calory.group();
+        caloryPie
+            .width(300)
+            .height(300)
+            .radius(120)
+            .dimension(calory)
+            .group(caloryGroup)
+//            .ordinalColors(['#1a45dc', '#e93f65', '#3fe96e', 'gray'])
+//            .colorDomain(["Profit","Loss","Equal","Unknow"])
+            .label(function(d) {
+            return (d.key) + "(" + Math.floor(d.value / all.value()) + "%)";
+            })
+            .innerRadius(30);
+        dc.renderAll();
+    });
 
 
     $scope.remove = function (index) {
