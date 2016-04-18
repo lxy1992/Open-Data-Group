@@ -16,22 +16,55 @@ body {
     padding: 0;
 }
 
-
-/* Custom page header */
-
-.header {
-    /* Make the masthead heading the same height as the navigation */
-}
-
 h3 {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
-    padding-bottom: 25px;
+}
+
+p.paragraph {
+    text-align: justify;
+    padding-bottom: 30px;
+    padding-right: 10px;
 }
 
 
-/* Main marketing message and sign up button */
+/* Progress */
+
+.progress {
+    border: 1px solid #999;
+    height: 24px;
+    padding: 2px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.progress .meter {
+    height: 100%;
+    display: block;
+    text-align: center;
+    color: #fff;
+    font-size: 11px;
+}
+
+.progress.round,
+.progress.round span {
+    -webkit-border-radius: 1000px;
+    -moz-border-radius: 1000px;
+    border-radius: 1000px;
+}
+
+
+/* Dash line*/
+
+hr {
+    max-width: 100px;
+}
+
+
+/* Jumbotron */
 
 .jumbotron {
     background-image: url(../images/jumbotron.jpg);
@@ -43,6 +76,9 @@ h3 {
     }
 }
 
+
+/* Table */
+
 .table td {
     text-align: center;
     word-break: break-all;
@@ -52,9 +88,15 @@ h3 {
     text-align: center;
 }
 
+
+/* Select unit*/
+
 .select-unit {
     width: 80%;
 }
+
+
+/* Back to Top */
 
 #toTop {
     position: fixed;
@@ -83,6 +125,3 @@ body.modal-open #wrap {
     font-size: 30px;
     display: block;
 }
-
-
-/* Table */
