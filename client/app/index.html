@@ -64,7 +64,17 @@
     </div>
 
 
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 pull-right">
+                <div>
+                    <button href="#top" id="backToTopBtn" class="btn btn-default">
+                        <span class="glyphicon glyphicon-chevron-up"></span> Top
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -79,30 +89,21 @@
         ga('send', 'pageview');
     </script>
 
+    <script src="bower_components/jquery/dist/jquery.js"></script>
 
     <!-- Back to Top Button -->
     <script>
-        $(document).ready(function () {
-            $('body').append('<div id="toTop" class="btn btn-info"><span class="glyphicon glyphicon-chevron-up"></span> Back to Top</div>');
-            $(window).scroll(function () {
-                if ($(this).scrollTop() != 0) {
-                    $('#toTop').fadeIn();
-                } else {
-                    $('#toTop').fadeOut();
-                }
-            });
-            $('#toTop').click(function () {
-                $("html, body").animate({
-                    scrollTop: 0
-                }, 600);
-                return false;
-            });
+        $('#backToTopBtn').click(function () {
+            $('html,body').animate({
+                scrollTop: 0
+            }, 'slow');
+            return false;
         });
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
