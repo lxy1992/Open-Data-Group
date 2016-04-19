@@ -89,7 +89,7 @@
                                 <tr>
                                     <th class="col-md-1">No.</th>
                                     <th class="col-md-3">Name</th>
-                                    <th class="col-md-1">Energy Per 100g(kCal)</th>
+                                    <th class="col-md-1">Energy(kCal/100g)</th>
                                     <th class="col-md-3"> Quantity</th>
                                     <th class="col-md-1">Measure</th>
                                     <th class="col-md-2">Total Energy(kCal)</th>
@@ -206,9 +206,9 @@
                             <table ng-table="tableParams" class="table table-list-search">
                                 <tr ng-repeat="sports in $data ">
                                     <td class="col-md-3" data-title="'Activity'">{{sports["Activity(1 hour)"]}}</td>
-                                    <td class="col-md-1" data-title="'130 lb (Kcal/h）'">{{ sports["130 lb"] }}</td>
-                                    <td class="col-md-1" data-title="'155 lb (Kcal/h)'">{{ sports["155 lb"] }}</td>
-                                    <td class="col-md-2" data-title="'Exercising Hour(s)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
+                                    <td class="col-md-1" data-title="'130 lb (kCal/h）'">{{ sports["130 lb"] }}</td>
+                                    <td class="col-md-1" data-title="'155 lb (kCal/h)'">{{ sports["155 lb"] }}</td>
+                                    <td class="col-md-2" data-title="'Exercising Hour(hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
                                 </tr>
                             </table>
 
