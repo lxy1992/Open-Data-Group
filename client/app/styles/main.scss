@@ -10,7 +10,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 header {
-    margin-bottom: 80px;
+    margin-bottom: 25px;
 }
 
 body {
@@ -25,6 +25,15 @@ h3 {
     margin-bottom: 0;
     line-height: 40px;
 }
+
+
+/* Nav Bar */
+
+//.navbar-fixed-bottom {
+//    height: 5px;
+//}
+
+/* Customer paragraph*/
 
 p.paragraph {
     text-align: justify;
@@ -43,6 +52,10 @@ p.description {
     font-size: 0.7em;
     padding-bottom: 10px;
     padding-top: 0px;
+}
+
+p.skills {
+    font-size: 0.8em;
 }
 
 
@@ -78,10 +91,6 @@ img.img-thumbnail {
     -webkit-border-radius: 1000px;
     -moz-border-radius: 1000px;
     border-radius: 1000px;
-}
-
-p.skills {
-    font-size: 0.8em;
 }
 
 
