@@ -192,7 +192,7 @@
                                     </form>
                                 </div>
                                 <div class="col-md-1">
-                                    <h4>Weight:</h4></div>
+                                    <h4>Weight(lb):</h4></div>
                                 <div class="col-md-5">
 
                                     <input type="Number" class="form-control" ng-model="setForWeight" id="user weight" placeholder="Please Enter Your Weight (lb)">
@@ -206,12 +206,9 @@
 
                             <table ng-table="tableParams" class="table table-list-search">
                                 <tr ng-repeat="sports in $data ">
-                                    <td class="col-md-4" data-title="'Activity(1 Hour)'">{{sports["Activity(1 hour)"]}}</td>
-                                    <td class="col-md-1" data-title="'130 lb'">{{ sports["130 lb"] }}</td>
-                                    <td class="col-md-1" data-title="'155 lb'">{{ sports["155 lb"] }}</td>
-                                    <td class="col-md-1" data-title="'180 lb'">{{ sports["180 lb"] }}</td>
-                                    <td class="col-md-1" data-title="'205 lb'">{{ sports["205 lb"] }}</td>
-                                    <td class="col-md-2" data-title="'1 lb'">{{ sports["1 lb"] }}</td>
+                                    <td class="col-md-3" data-title="'Activity(1 Hour)'">{{sports["Activity(1 hour)"]}}</td>
+                                    <td class="col-md-1" data-title="'130 lb (Kcal/h）'">{{ sports["130 lb"] }}</td>
+                                    <td class="col-md-1" data-title="'155 lb (Kcal/h)'">{{ sports["155 lb"] }}</td>
                                     <td class="col-md-2" data-title="'Exercising Hour(s)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
                                 </tr>
                             </table>

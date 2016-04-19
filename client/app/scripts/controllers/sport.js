@@ -9,7 +9,7 @@
  */
 angular.module('clientApp')
   .controller('SportCtrl', function ($scope, Sport, NgTableParams) {
-    
+    $scope.setForWeight = 150;
     $scope.setWeight = function(weight){
       return
     };
@@ -23,7 +23,7 @@ angular.module('clientApp')
             paginationMinBlocks: 2,
             data: $scope.sports
         });
-        
+
         console.log($scope.sports);
 //        $scope.tableParams.reload();
     });
@@ -35,7 +35,7 @@ angular.module('clientApp')
         }
         $scope.tableParams.filter({ "Activity(1 hour)": term });
     }
-    
+
     $scope.$watch("globalSearchTerm", function(oldVal, newVal){
         if (oldVal) {
             $scope.applyGlobalSearch();
