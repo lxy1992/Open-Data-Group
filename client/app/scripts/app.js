@@ -29,10 +29,10 @@ angular
                 , controller: 'AboutCtrl'
                 , controllerAs: 'about'
             })
-            .when('/food', {
+            .when('/', {
                 templateUrl: 'views/food.html'
                 , controller: 'FoodCtrl'
-            })
+            })/*
             .when('/sport', {
                 templateUrl: 'views/sport.html'
                 , controller: 'SportCtrl'
@@ -40,7 +40,7 @@ angular
             .when('/sport/:id', {
                 templateUrl: 'views/sport-view.html'
                 , controller: 'SportViewCtrl'
-            })
+            })*/
             .otherwise({
                 redirectTo: '/'
             });
