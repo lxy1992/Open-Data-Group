@@ -39,6 +39,12 @@ angular.module('clientApp')
     $scope.addItem = function(id){
         console.log(id);
         var params = {format:'json', type: 'b', api_key:'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7', ndbno:id};
+        for(var i = 0; i < $scope.Product.length; i++){
+            if ($scope.Product[i].id === id) {
+                $scope.Product[i].quantity ++;
+                return;
+            }
+        }
         Food.getList(params).then(function(data){
             var food = data.plain()[0].originalElement.report.food;
             // Transfer NDB result to a simplified model
