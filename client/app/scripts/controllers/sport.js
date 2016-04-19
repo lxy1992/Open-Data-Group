@@ -30,9 +30,7 @@ angular.module('clientApp')
 
     $scope.applyGlobalSearch = function() {
         var term = $scope.globalSearchTerm;
-        if ($scope.isInvertedSearch){
-            term = "!" + term;
-        }
+        
         $scope.tableParams.filter({ "Activity(1 hour)": term });
     }
 
