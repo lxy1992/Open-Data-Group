@@ -205,7 +205,7 @@
 
                             <table ng-table="tableParams" class="table table-list-search">
                                 <tr ng-repeat="sports in $data ">
-                                    <td class="col-md-3" data-title="'Activity(1 Hour)'">{{sports["Activity(1 hour)"]}}</td>
+                                    <td class="col-md-3" data-title="'Activity'">{{sports["Activity(1 hour)"]}}</td>
                                     <td class="col-md-1" data-title="'130 lb (Kcal/h）'">{{ sports["130 lb"] }}</td>
                                     <td class="col-md-1" data-title="'155 lb (Kcal/h)'">{{ sports["155 lb"] }}</td>
                                     <td class="col-md-2" data-title="'Exercising Hour(s)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
