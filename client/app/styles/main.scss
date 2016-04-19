@@ -28,6 +28,26 @@ p.paragraph {
     padding-right: 10px;
 }
 
+p.name {
+    text-align: center;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+p.description {
+    text-align: center;
+    font-size: 0.7em;
+    padding-bottom: 10px;
+    padding-top: 0px;
+}
+
+
+/* Image*/
+
+img.img-thumbnail {
+    margin: 0 auto;
+}
+
 
 /* Progress */
 
