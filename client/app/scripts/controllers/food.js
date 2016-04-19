@@ -11,17 +11,18 @@ angular.module('clientApp')
   .controller('FoodCtrl', function ($scope, Food, Search, NgTableParams) {
     var params = {format:'json', sort:'n','max':25,'offset':0, api_key:'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7'};
 
+    //store the list of food
     $scope.Product = [];
 
-    //this.results = Food.getList(params)[0].$object;
-    $scope.$watch('query', function(oldVal, newVal, scope){
-      if (oldVal)
+    // Watch the query to call NDB api to real-time search food items
+    $scope.$watch('query', function(newVal){
+      if (newVal)
         params.q = oldVal;
       Search.getList(params).then(function(data){
         $scope.results = data.plain()[0].originalElement;
 
         $scope.searchTableParams = new NgTableParams({
-          count: 5 //每页显示数量
+          count: 5 
         }, {
             paginationMaxBlocks: 5,
             paginationMinBlocks: 2,
@@ -34,6 +35,7 @@ angular.module('clientApp')
       //$scope.results = $scope.results[0].list.item;
     });
 
+    // add food to list.
     $scope.addItem = function(id){
         console.log(id);
         var params = {format:'json', type: 'b', api_key:'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7', ndbno:id};
@@ -82,52 +84,61 @@ angular.module('clientApp')
         })
     };
 
-    //$scope.cart = {};
-    $scope.$watch('total', function(oldVal){
+    //watch total energy to update chart
+    $scope.$watch('total', function(newVal, oldVal){
         var data = [];
-        if (oldVal) {
-        $scope.Product.forEach(function(item, index){
-            data.push({
-                name: item.name,
-                y: item.quantity * item.nutrients["Energy"].measures[item.measure].value
-            })
-        });
-
-        $('#highcharts').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: 'Food Carlories Proportion'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.y}({point.percentage:.1f}%)</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                        style: {
-                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+        // in case deleteAll -> newVal = ''
+        if (newVal || oldVal) {
+            $scope.Product.forEach(function(item, index){
+                data.push({
+                    name: item.name,
+                    y: item.quantity * item.nutrients["Energy"].measures[item.measure].value
+                })
+            });
+            console.log("!!!")
+            // newVal = '' --> no item in list --> destroy chart
+            if (oldVal && !newVal){
+                console.log($('#highcharts').highcharts().destroy());
+            } 
+            // have item in list, render chart
+            else {
+                $('#highcharts').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Food Carlories Proportion'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.y}({point.percentage:.1f}%)</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
                         }
-                    }
-                }
-            },
-            series: [{
-                name: 'Carlories',
-                colorByPoint: true,
-                data: data
-            }]
-        });}
+                    },
+                    series: [{
+                        name: 'Carlories',
+                        colorByPoint: true,
+                        data: data
+                    }]
+                });
+            }
+        }
     })
 
-
+    //return total energy of all food
     $scope.totalEnergy = function () {
         var total = 0;
         angular.forEach($scope.Product, function (item) {
@@ -137,43 +148,7 @@ angular.module('clientApp')
         return total;
     }
 
-    /*var caloryPie = dc.pieChart('#caloryPiechart');
-    //d3.json($scope.Product, function(d){
-    var d = $scope.Product;    
-        var cross = crossfilter($scope.Product);
-        //var all = cross.groupAll();
-        var all = cross
-//        ===============Pie Chart==================
-        var calory = cross.dimension(function(d){
-            /*angular.forEach(d, function (item) {
-            total = item.quantity * item.nutrients["Energy"].measures[item.measure].value;
-            return total;
-            });/
-            return d.quantity * d.nutrients["Energy"].measures[d.measure].value;
-            
-        });
-        console.log(calory);
-
-
-        var caloryGroup = calory.group();
-        caloryPie
-            .width(300)
-            .height(300)
-            .radius(120)
-            .dimension(calory)
-            .group(caloryGroup)
-//            .ordinalColors(['#1a45dc', '#e93f65', '#3fe96e', 'gray'])
-//            .colorDomain(["Profit","Loss","Equal","Unknow"])
-            .label(function(d) {
-            return (d.id) //+ "(" + Math.floor(d.value / all.value()) + "%)";
-            })
-            .innerRadius(30);
-        //dc.renderAll();
-   // });*/
-
-    
-    
-
+    //remove one item
     $scope.remove = function (index) {
         var ans = confirm("Do you want to remove this item？");
         if (ans) {
@@ -181,6 +156,7 @@ angular.module('clientApp')
         }
     }
 
+    //remove all items
     $scope.removeall = function () {
         var index;
         var ans = confirm("Do you want to remove all items？");
@@ -189,13 +165,14 @@ angular.module('clientApp')
         }
     }
 
+    // reduce item quantity by 1
     $scope.reduce = function (index) {
         if ($scope.Product[index].quantity != 1) {
             $scope.Product[index].quantity--;
         } else {
             var ans = confirm("Do you want to remove this item？");
             if (ans) {
-                $scope.Product.slice(index, 1);
+                $scope.Product.splice(index, 1);
             } else {
                 $scope.Product[index].quantity = 1;
             }
