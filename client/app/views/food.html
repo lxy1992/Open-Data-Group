@@ -1,5 +1,5 @@
 <div ng-controller='FoodCtrl'>
-
+<div>
     <div class="container-fluid">
         <div class="jumbotron">
             <center>
@@ -212,7 +212,7 @@
                                     <td class="col-md-1" data-title="'180 lb'">{{ sports["180 lb"] }}</td>
                                     <td class="col-md-1" data-title="'205 lb'">{{ sports["205 lb"] }}</td>
                                     <td class="col-md-2" data-title="'1 lb'">{{ sports["1 lb"] }}</td>
-                                    <td class="col-md-2" data-title="'Exercising Minutes'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
+                                    <td class="col-md-2" data-title="'Exercising Hour(s)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
                                 </tr>
                             </table>
 
@@ -223,4 +223,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
