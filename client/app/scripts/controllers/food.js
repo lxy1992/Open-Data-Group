@@ -56,6 +56,7 @@ angular.module('clientApp')
                 measure: 'g',
                 nutrients: {}
             };
+            model.tooltipHtml = "<div><h4>Nutrients(per 100g):</h4></div><hr>"
             food.nutrients.forEach(function(n){
                 model.nutrients[n.name] = {
                     unit: n.unit,
@@ -81,6 +82,7 @@ angular.module('clientApp')
                         }
                     }
                 });
+                model.tooltipHtml += "<div class='row'><div class='col-md-8' align='left'><b>" + n.name + ":</b></div><div class='col-md-2' align='right'>" + n.value + n.unit + "</div></div>"
             });
             model.energy = model.nutrients['Energy'].value/100;
             $scope.Product.push(model);

@@ -107,7 +107,11 @@
                             <tr ng-repeat="item in Product">
                                 <td>{{$index+1}}</td>
                                 <td>
-                                    <div class="longName">{{item.name}}</div>
+                                    <div class="longName">
+                                        <a href="" data-toggle="tooltip" data-placement="right"
+        title="{{item.tooltipHtml}}"
+        data-html="true"
+        tooltip-placement="left" onmouseenter="$(this).tooltip('show')">{{item.name}}</a></div>
                                 </td>
                                 <td>{{item.nutrients["Energy"].value.toFixed(2)}}</td>
                                 <td class="form-inline">
