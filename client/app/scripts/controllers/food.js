@@ -101,10 +101,9 @@ angular.module('clientApp')
                     y: item.quantity * item.nutrients["Energy"].measures[item.measure].value
                 })
             });
-            console.log("!!!")
             // newVal = '' --> no item in list --> destroy chart
             if (oldVal && !newVal){
-                console.log($('#highcharts').highcharts().destroy());
+                $('#highcharts').highcharts().destroy();
             } 
             // have item in list, render chart
             else {
