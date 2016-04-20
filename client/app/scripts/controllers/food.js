@@ -9,7 +9,7 @@
  */
 angular.module('clientApp')
   .controller('FoodCtrl', function ($scope, Food, Search, NgTableParams) {
-    var params = {format:'json', sort:'n','max':25,'offset':0, api_key:'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7'};
+    var param = {format:'json', sort:'n','max':25,'offset':0, api_key:'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7'};
 
     //store the list of food
     $scope.Product = [];
@@ -17,15 +17,15 @@ angular.module('clientApp')
     // Watch the query to call NDB api to real-time search food items
     $scope.$watch('query', function(newVal){
       if (newVal)
-        params.q = oldVal;
-      Search.getList(params).then(function(data){
+        param.q = newVal;
+      Search.getList(param).then(function(data){
         $scope.results = data.plain()[0].originalElement;
 
         $scope.searchTableParams = new NgTableParams({
           count: 5 
         }, {
-            paginationMaxBlocks: 5,
-            paginationMinBlocks: 2,
+            //paginationMaxBlocks: 5,
+            //paginationMinBlocks: 2,
             data: $scope.results.list.item
         });
         //console.log($scope.results);
