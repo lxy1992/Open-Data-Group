@@ -46,17 +46,86 @@
                 <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
                     <ul class="nav navbar-nav">
-                        <li><a href="#/">Home</a></li>
-                        <!--li><a ng-href="#/sport">Sport</a></li-->
+                        <li><a ng-href="#/">Home</a></li>
                         <li><a ng-href="#/about">About</a></li>
-                        <!--li><a ng-href="#/food">Food</a></li>
-                        <li><a ng-href="#/">Contact</a></li-->
+
+
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="login" data-toggle="modal" data-target="#accountModal">Log in</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
+
+
+
+        <!--     Account Modal -->
+
+        <div id="accountModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-1">
+                        <div class="modal-content accountModal">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Login to HealthCal.com</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="well">
+                                            <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
+                                                <div class="form-group">
+                                                    <label for="username" class="control-label">Username</label>
+                                                    <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
+                                                    <span class="help-block"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password" class="control-label">Password</label>
+                                                    <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
+                                                    <span class="help-block"></span>
+                                                </div>
+                                                <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="remember" id="remember"> Remember login
+                                                    </label>
+                                                    <p class="help-block">(if this is a private computer)</p>
+                                                </div>
+                                                <button type="submit" class="btn btn-success btn-block">Login</button>
+                                                <a href="/forgot/" class="btn btn-default btn-block">Help to login</a>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <p class="lead">Register now for <span class="text-success">FREE</span></p>
+                                        <ul class="list-unstyled" style="line-height: 3">
+                                            <li><span class="fa fa-check text-success"></span> Set up your diet plan</li>
+                                            <li><span class="fa fa-check text-success"></span> Calculate colories you take in</li>
+                                            <li><span class="fa fa-check text-success"></span> Calculate time needed to burn calories </li>
+                                            <li><span class="fa fa-check text-success"></span> Save your favorite recipes</li>
+                                            <!--                                    <li><span class="fa fa-check text-success"></span> Achieve your goal</li>-->
+
+                                        </ul>
+                                        <p><a href="/new-customer/" class="btn btn-info btn-block">Yes please, register now!</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </header>
+
+
 
 <body ng-app="clientApp">
     <!--[if lte IE 8]>

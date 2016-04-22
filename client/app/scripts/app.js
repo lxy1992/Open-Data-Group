@@ -11,10 +11,18 @@
 angular
     .module('clientApp', [
     'ngCookies'
-    , 'ngRoute'
-    , 'restangular'
-    , 'ngTable'
-    , 'puElasticInput'
+
+        
+        , 'ngRoute'
+
+        
+        , 'restangular'
+
+        
+        , 'ngTable'
+
+        
+        , 'puElasticInput'
   ])
     .constant('NDB_KEY', 'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7')
     .config(function ($routeProvider, $httpProvider, RestangularProvider) {
@@ -32,15 +40,16 @@ angular
             .when('/', {
                 templateUrl: 'views/food.html'
                 , controller: 'FoodCtrl'
-            })/*
-            .when('/sport', {
-                templateUrl: 'views/sport.html'
-                , controller: 'SportCtrl'
             })
-            .when('/sport/:id', {
-                templateUrl: 'views/sport-view.html'
-                , controller: 'SportViewCtrl'
-            })*/
+            //            .when('/account', {
+            //                templateUrl: 'views/account.html'
+            //                , controller: 'accountCtrl'
+            //            })
+            /*
+                        .when('/sport/:id', {
+                            templateUrl: 'views/sport-view.html'
+                            , controller: 'SportViewCtrl'
+                        })*/
             .otherwise({
                 redirectTo: '/'
             });
