@@ -12,14 +12,22 @@ angular
     .module('clientApp', [
     'ngCookies'
 
+
+
         
         , 'ngRoute'
+
+
 
         
         , 'restangular'
 
+
+
         
         , 'ngTable'
+
+
 
         
         , 'puElasticInput'
@@ -40,6 +48,10 @@ angular
             .when('/', {
                 templateUrl: 'views/food.html'
                 , controller: 'FoodCtrl'
+            })
+            .when('/personal', {
+                templateUrl: 'views/personal.html'
+                , controller: 'PersonalCtrl'
             })
             //            .when('/account', {
             //                templateUrl: 'views/account.html'
