@@ -142,6 +142,12 @@
                                         <button type="button" class="btn btn-danger" ng-click="removeall()">Delete All</button>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td colspan="6"></td>
+                                    <td>
+                                        <button type="button" class="btn btn-success">Record</button>
+                                    </td>
+                                </tr>
                             </tbody>
                             </table>
                             <div id="highcharts"></div>
@@ -204,36 +210,70 @@
                                     <td class="col-md-1" data-title="'155 lb (kCal/h)'">{{ sports["155 lb"] }}</td>
                                     <td class="col-md-2" data-title="'Exercising Time (hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
                                     <td class="col-md-1" data-title="'Action'">
-                                        <a class="btn btn-primary btn-sm" ng-click="addSport(sport.index)"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
+                                        <a class="btn btn-primary btn-sm" ng-click="addSport(sports)"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
                                     </td>
                                 </tr>
                             </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <div class="container-fluid">
                             <center>
-                                <h3>Sports List</h3></center>
+                                <h3>Record Your Exercise</h3></center>
+                            <hr class="small">
+                            <!--            <label for="title" class="control-label">Sport Title</label>-->
+
                             <div>
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th class="col-md-2">No.</th>
-
-                                            <th class="col-md-6">Activity</th>
-
+                                            <th class="col-md-4">Activity</th>
+                                            <th class="col-md-4">Time(hours)</th>
+                                            <th class="col-md-4">Energy(kCal)</th>
                                             <th class="col-md-2">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="sport in sports">
+                                        <tr ng-repeat="sport in sportList">
                                             <td>{{$index+1}}</td>
-                                            <td>{{$sport.name}}</td>
+                                            <td>{{sport.name}}</td>
+                                            <td class="form-inline">
+                                            <center>
+                                                <button type="button" class="btn btn-defualt glyphicon glyphicon-minus" ng-click="reduce($index)"></button>
+                                                <input type="text" name="" class="form-control enter-quantity" ng-model="sport.time" pu-elastic-input style="min-width: 20px; max-width: 100px;">
+                                                <button type="button" class="btn btn-defualt glyphicon glyphicon-plus" ng-click="add($index)"></button>
+                                            </center>
+                                            </td>
+                                            <td>{{(sport.perHourLb*sport.time*setForWeight).toFixed(2)}}</td>
                                             <td>
                                                 <button type="button" class="btn btn-danger" ng-click="remove($index)">Delete</button>
                                             </td>
-
                                         </tr>
-                                        <td colspan="2"></td>
+                                        <tr>
+                                        <td colspan="3"></td>
+                                        <td style="font-size:20px;">
+                                            <center><strong>Total Energy:<br></strong> {{totalEnergy().toFixed(2)}} kCal</center>
+                                        </td>
                                         <td>
                                             <button type="button" class="btn btn-danger" ng-click="removeall()">Delete All</button>
                                         </td>
+                                        </tr>
+                                        <tr>
+                                        <td colspan="4"></td>
+                                        <td>
+                                            <button type="button" class="btn btn-success">Record</button>
+                                        </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

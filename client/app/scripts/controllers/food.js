@@ -39,6 +39,7 @@ angular.module('clientApp')
     $scope.addItem = function(id){
         console.log(id);
         var params = {format:'json', type: 'b', api_key:'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7', ndbno:id};
+        // if already in list, add quantity
         for(var i = 0; i < $scope.Product.length; i++){
             if ($scope.Product[i].id === id) {
                 $scope.Product[i].quantity ++;

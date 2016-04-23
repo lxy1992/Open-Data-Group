@@ -14,14 +14,15 @@ angular.module('clientApp')
             return
         };
         $scope.sports = [];
+        $scope.sportList = [];
         Sport.getList().then(function (data, index) {
             $scope.sports = data;
             $scope.tableParams = new NgTableParams({
                 count: 5 //每页显示数量
             }, {
-                paginationMaxBlocks: 5
-                , paginationMinBlocks: 2
-                , data: $scope.sports
+                paginationMaxBlocks: 5,
+                paginationMinBlocks: 2,
+                data: $scope.sports
             });
 
             console.log($scope.sports);
@@ -36,23 +37,29 @@ angular.module('clientApp')
             });
         }
 
-        $scope.$watch("globalSearchTerm", function (oldVal, newVal) {
-            if (oldVal) {
+        $scope.$watch("globalSearchTerm", function (newVal) {
+            if (newVal) {
                 $scope.applyGlobalSearch();
             }
         })
 
         // add food to list.
-        $scope.addSport = function (index) {
-            console.log(index);
-            var sport = data.plain()[0].originalElement.report.sport;
-
+        $scope.addSport = function (sport) {
+            //console.log(sport);
+            // if already in list, add time.
+            for(var i = 0; i < $scope.sportList.length; i++){
+                if ($scope.sportList[i].name === sport["Activity(1 hour)"]) {
+                    $scope.sportList[i].time ++;
+                    return;
+                }
+            }
+            // else push to list
             var model = {
-
-                name: sport.name
-
+                name: sport["Activity(1 hour)"],
+                perHourLb: sport["1 lb"],
+                time: 1.0
             };
-            $scope.sports.push(model);
+            $scope.sportList.push(model);
         };
 
 
@@ -60,7 +67,7 @@ angular.module('clientApp')
         $scope.remove = function (index) {
             var ans = confirm("Do you want to remove this sport？");
             if (ans) {
-                $scope.sports.splice(index, 1);
+                $scope.sportList.splice(index, 1);
             }
         }
 
@@ -69,26 +76,36 @@ angular.module('clientApp')
             var index;
             var ans = confirm("Do you want to remove all sports？");
             if (ans) {
-                $scope.sports = [];
+                $scope.sportList = [];
             }
         }
 
         // reduce sport quantity by 1
         $scope.reduce = function (index) {
-            if ($scope.sports[index].quantity != 1) {
-                $scope.sports[index].quantity--;
+            if ($scope.sportList[index].time != 0.1) {
+                $scope.sportList[index].time = parseFloat(($scope.sportList[index].time - 0.1).toFixed(1));
             } else {
                 var ans = confirm("Do you want to remove this sport？");
                 if (ans) {
-                    $scope.sports.splice(index, 1);
+                    $scope.sportList.splice(index, 1);
                 } else {
-                    $scope.sports[index].quantity = 1;
+                    $scope.sportList[index].time = 0.1;
                 }
             }
         }
 
         $scope.add = function (index) {
-            $scope.sports[index].quantity++;
+            $scope.sportList[index].time = parseFloat(($scope.sportList[index].time + 0.1).toFixed(1));
+        }
+
+        //return total energy of all exercise
+        $scope.totalEnergy = function () {
+            var total = 0;
+            angular.forEach($scope.sportList, function (item) {
+                total += item.perHourLb * item.time * $scope.setForWeight;
+            });
+            $scope.total = total;
+            return total;
         }
 
     });
