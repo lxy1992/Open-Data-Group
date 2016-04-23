@@ -1,63 +1,63 @@
 <div ng-controller='FoodCtrl'>
-<div>
     <div>
-        <div class="container-fluid">
-            <div class="jumbotron">
-                <center>
-                    <h1>HealthCal</h1>
+        <div>
+            <div class="container-fluid">
+                <div class="jumbotron">
+                    <center>
+                        <h1>HealthCal</h1>
 
-                    <h4>Bootstrap Your Health</h4>
-                    <!--    <a class="btn btn-primary" href="#">Learn more</a></center>-->
-                    <button type="button" class="btn btn-success " data-toggle="modal" data-target="#myModal">Search Food</button>
-                </center>
+                        <h4>Bootstrap Your Health</h4>
+                        <!--    <a class="btn btn-primary" href="#">Learn more</a></center>-->
+                        <button type="button" class="btn btn-success " data-toggle="modal" data-target="#myModal">Search Food</button>
+                    </center>
+                </div>
             </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <!-- Modal -->
-                            <div id="myModal" class="modal fade" role="dialog">
-                                <div class="modal-dialog modal-lg">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h3 class="modal-title">Search Food</h3>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!--Search bar-->
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <form action="#" method="get">
-                                                            <div class="input-group">
-                                                                <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
-                                                                <input class="form-control" ng-model="query" id="system-search" name="q" placeholder="Please Enter Food Name" required>
-                                                                <span class="input-group-btn">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <!-- Modal -->
+                                <div id="myModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog modal-lg">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h3 class="modal-title">Search Food</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!--Search bar-->
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <form action="#" method="get">
+                                                                <div class="input-group">
+                                                                    <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+                                                                    <input class="form-control" ng-model="query" id="system-search" name="q" placeholder="Please Enter Food Name" required>
+                                                                    <span class="input-group-btn">
                                                                 <button type="submit" class="btn btn-default">
                                                                     <i class="glyphicon glyphicon-search"></i>
                                                                 </button>
                                                             </span>
-                                                            </div>
-                                                        </form>
-                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
 
-                                                    <div class="col-md-12">
-                                                        <table ng-table="searchTableParams" class="table table-list-search">
-                                                            <tr ng-repeat="item in $data">
-                                                                <td class="col-md-3" data-title="'Group'">
-                                                                    <div class="longName">{{item.group}}</div>
-                                                                </td>
-                                                                <td class="col-md-8" data-title="'Food'">
-                                                                    <div class="longName">{{item.name}}</div>
-                                                                </td>
-                                                                <td class="col-md-1" data-title="'Action'">
-                                                                    <a class="btn btn-primary btn-sm" ng-click="addItem(item.ndbno)"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
-                                                                </td>
-                                                            </tr>
-                                                            <!--thead>
+                                                        <div class="col-md-12">
+                                                            <table ng-table="searchTableParams" class="table table-list-search">
+                                                                <tr ng-repeat="item in $data">
+                                                                    <td class="col-md-3" data-title="'Group'">
+                                                                        <div class="longName">{{item.group}}</div>
+                                                                    </td>
+                                                                    <td class="col-md-8" data-title="'Food'">
+                                                                        <div class="longName">{{item.name}}</div>
+                                                                    </td>
+                                                                    <td class="col-md-1" data-title="'Action'">
+                                                                        <a class="btn btn-primary btn-sm" ng-click="addItem(item.ndbno)"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <!--thead>
                                                             <tr>
                                                                 <th class="id">ID</th>
                                                                 <th class="group">Group</th>
@@ -75,79 +75,76 @@
                                                                 </td>
                                                             </tr>
                                                         </tbody-->
-                                                        </table>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Modal -->
-                            <!-- Cart Item -->
+                                <!-- Modal -->
+                                <!-- Cart Item -->
 
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="col-md-1">No.</th>
-                                        <th class="col-md-3">
-                                            Name</div>
-                        </th>
-                        <th class="col-md-1">Energy(kCal/100g)</th>
-                        <th class="col-md-3">Quantity</th>
-                        <th class="col-md-1">Measure</th>
-                        <th class="col-md-2">Total Energy(kCal)</th>
-                        <th class="col-md-1">Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="item in Product">
-                                <td>{{$index+1}}</td>
-                                <td>
-                                    <div class="longName">
-                                        <a href="" data-toggle="tooltip" data-placement="right"
-        title="{{item.tooltipHtml}}"
-        data-html="true"
-        tooltip-placement="left" onmouseenter="$(this).tooltip('show')">{{item.name}}</a></div>
-                                </td>
-                                <td>{{item.nutrients["Energy"].value.toFixed(2)}}</td>
-                                <td class="form-inline">
-                                    <center>
-                                        <button type="button" class="btn btn-defualt glyphicon glyphicon-minus" ng-click="reduce($index)"></button>
-                                        <input type="text" name="" class="form-control enter-quantity" value="1" ng-model="item.quantity" pu-elastic-input style="min-width: 20px; max-width: 100px;">
-                                        <button type="button" class="btn btn-defualt glyphicon glyphicon-plus" ng-click="add($index)"></button>
-                                    </center>
-                                </td>
-                                <td>
-                                    <center>
-                                        <select class="form-control select-unit" ng-model="item.measure">
-                                            <option selected="true" value='g'>g</option>
-                                            <option ng-repeat="name in item.nutrients['Energy'].measureNames" value="{{name}}">
-                                                {{name}} ({{item.nutrients['Energy'].measures[name].eqv}}g)
-                                            </option>
-                                        </select>
-                                    </center>
-                                </td>
-                                <td>{{(item.quantity * item.nutrients["Energy"].measures[item.measure].value).toFixed(2)}}</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" ng-click="remove($index)">Delete</button>
-                                </td>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-1">No.</th>
+                                            <th class="col-md-3">
+                                                Name</div>
+                            </th>
+                            <th class="col-md-1">Energy(kCal/100g)</th>
+                            <th class="col-md-3">Quantity</th>
+                            <th class="col-md-1">Measure</th>
+                            <th class="col-md-2">Total Energy(kCal)</th>
+                            <th class="col-md-1">Delete</th>
                             </tr>
-                            <tr>
-                                <td colspan="5"></td>
-                                <td style="font-size:20px;">
-                                    <center><strong>Total Energy：<br></strong> {{totalEnergy().toFixed(2)}} kCal</center>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" ng-click="removeall()">Delete All</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        </table>
-                        <div id="highcharts"></div>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in Product">
+                                    <td>{{$index+1}}</td>
+                                    <td>
+                                        <div class="longName">
+                                            <a href="" data-toggle="tooltip" data-placement="right" title="{{item.tooltipHtml}}" data-html="true" tooltip-placement="left" onmouseenter="$(this).tooltip('show')">{{item.name}}</a></div>
+                                    </td>
+                                    <td>{{item.nutrients["Energy"].value.toFixed(2)}}</td>
+                                    <td class="form-inline">
+                                        <center>
+                                            <button type="button" class="btn btn-defualt glyphicon glyphicon-minus" ng-click="reduce($index)"></button>
+                                            <input type="text" name="" class="form-control enter-quantity" value="1" ng-model="item.quantity" pu-elastic-input style="min-width: 20px; max-width: 100px;">
+                                            <button type="button" class="btn btn-defualt glyphicon glyphicon-plus" ng-click="add($index)"></button>
+                                        </center>
+                                    </td>
+                                    <td>
+                                        <center>
+                                            <select class="form-control select-unit" ng-model="item.measure">
+                                                <option selected="true" value='g'>g</option>
+                                                <option ng-repeat="name in item.nutrients['Energy'].measureNames" value="{{name}}">
+                                                    {{name}} ({{item.nutrients['Energy'].measures[name].eqv}}g)
+                                                </option>
+                                            </select>
+                                        </center>
+                                    </td>
+                                    <td>{{(item.quantity * item.nutrients["Energy"].measures[item.measure].value).toFixed(2)}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" ng-click="remove($index)">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5"></td>
+                                    <td style="font-size:20px;">
+                                        <center><strong>Total Energy：<br></strong> {{totalEnergy().toFixed(2)}} kCal</center>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" ng-click="removeall()">Delete All</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                            <div id="highcharts"></div>
                         </div>
                     </div>
                 </div>
@@ -206,9 +203,40 @@
                                     <td class="col-md-1" data-title="'130 lb (kCal/h）'">{{ sports["130 lb"] }}</td>
                                     <td class="col-md-1" data-title="'155 lb (kCal/h)'">{{ sports["155 lb"] }}</td>
                                     <td class="col-md-2" data-title="'Exercising Time (hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
+                                    <td class="col-md-1" data-title="'Action'">
+                                        <a class="btn btn-primary btn-sm" ng-click="addSport(sport.index)"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
+                                    </td>
                                 </tr>
                             </table>
+                            <center>
+                                <h3>Sports List</h3></center>
+                            <div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-2">No.</th>
 
+                                            <th class="col-md-6">Activity</th>
+
+                                            <th class="col-md-2">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="sport in sports">
+                                            <td>{{$index+1}}</td>
+                                            <td>{{$sport.name}}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" ng-click="remove($index)">Delete</button>
+                                            </td>
+
+                                        </tr>
+                                        <td colspan="2"></td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" ng-click="removeall()">Delete All</button>
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
