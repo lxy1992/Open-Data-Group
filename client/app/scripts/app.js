@@ -49,6 +49,7 @@ angular
                 templateUrl: 'views/food.html'
                 , controller: 'FoodCtrl'
             })
+
             .when('/personal', {
                 templateUrl: 'views/personal.html'
                 , controller: 'PersonalCtrl'
@@ -62,6 +63,15 @@ angular
                             templateUrl: 'views/sport-view.html'
                             , controller: 'SportViewCtrl'
                         })*/
+            .when('/sport/:id', {
+                templateUrl: 'views/sport-view.html'
+                , controller: 'SportViewCtrl'
+            })
+            .when('/user', {
+              templateUrl: 'views/user.html',
+              controller: 'UserCtrl',
+              controllerAs: 'user'
+            })
             .otherwise({
                 redirectTo: '/'
             });
