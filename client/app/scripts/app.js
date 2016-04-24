@@ -69,8 +69,7 @@ angular
             })
             .when('/user', {
               templateUrl: 'views/user.html',
-              controller: 'UserCtrl',
-              controllerAs: 'user'
+              controller: 'UserCtrl'
             })
             .otherwise({
                 redirectTo: '/'
