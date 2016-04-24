@@ -99,7 +99,7 @@ angular.module('clientApp')
         }
 
         //return total energy of all exercise
-        $scope.totalEnergy = function () {
+        $scope.sportTotalEnergy = function () {
             var total = 0;
             angular.forEach($scope.sportList, function (item) {
                 total += item.perHourLb * item.time * $scope.setForWeight;
