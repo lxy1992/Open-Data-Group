@@ -4,11 +4,11 @@
  * @ngdoc function
  * @name clientApp.controller:UserCtrl
  * @description
- * # UserCtrl
+ * # PersonalCtrl
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('UserCtrl', function () {
+    .controller('PersonalCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
