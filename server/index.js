@@ -3,6 +3,9 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var _ = require('lodash');
+// used to create, sign, and verify tokens
+var jwt    = require('jsonwebtoken'); 
+var config = require('./config'); 
 
 // Create the application.
 var app = express();
@@ -11,6 +14,7 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride('X-HTTP-Method-Override'));
+app.set('superSecret', config.secret); // secret variable
 
 
 // CORS Support
@@ -22,6 +26,7 @@ app.use(function(req, res, next) {
 });
 
 // Connect to MongoDB
+
 mongoose.connect('mongodb://localhost/opendata');
 mongoose.connection.once('open', function() {
 

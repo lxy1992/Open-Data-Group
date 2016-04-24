@@ -122,6 +122,10 @@ angular
     .factory('Sport', function (ServerRestangular) {
         return ServerRestangular.service('sport');
     })
+    .factory('User', function (ServerRestangular) {
+        return ServerRestangular.service('user');
+    })
+
     .factory('FoodRecord', function (ServerRestangular) {
         return ServerRestangular.service('foodRecord');
     })

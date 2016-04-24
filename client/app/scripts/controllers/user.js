@@ -8,10 +8,21 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('UserCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    .controller('UserCtrl', function ($scope, User, $location, $routeParams) {
+    $scope.user = {};
+    $scope.saveUser = function(){
+        User.post($scope.user).then(function(){
+            $location.path('/home');
+        });
+    };
+    $scope.checkUser = function(){
+        
+    };
+    $scope.updateUser = function(){
+        User.one($routeParams.id).get().then(function(user){
+            $scope.user = user;
+            $scope.saveUser();
+        })
+    };
+    
   });
