@@ -5,10 +5,25 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-body">
 
-                                <p>This is personal page</p>
+                            <h3>FoodRecord</h3>
+                            <div ng-repeat="fr in foodRecords">
+                                {{fr}}
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+
+                            <h3>ExerciseRecord</h3>
+                            <div ng-repeat="er in exerciseRecords">
+                                {{er}}
+                            </div>
+
                         </div>
                     </div>
                 </div>

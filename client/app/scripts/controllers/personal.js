@@ -8,10 +8,13 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('PersonalCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('PersonalCtrl', function ($scope, FoodRecord, ExerciseRecord, NgTableParams) {
+    
+    FoodRecord.getList().then(function (data) {
+        $scope.foodRecords = data.plain();
+    });
+    ExerciseRecord.getList().then(function(data) {
+        $scope.exerciseRecords = data.plain();
+    });
+
+});

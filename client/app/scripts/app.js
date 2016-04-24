@@ -10,27 +10,11 @@
  */
 angular
     .module('clientApp', [
-    'ngCookies'
-
-
-
-        
-        , 'ngRoute'
-
-
-
-        
-        , 'restangular'
-
-
-
-        
-        , 'ngTable'
-
-
-
-        
-        , 'puElasticInput'
+    'ngCookies',
+    'ngRoute',
+    'restangular',
+    'ngTable',
+    'puElasticInput'
   ])
     .constant('NDB_KEY', 'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7')
     .config(function ($routeProvider, $httpProvider, RestangularProvider) {
@@ -95,7 +79,7 @@ angular
         }
       });
     })*/
-    .factory('FoodRestangular', function (Restangular) {
+    .factory('NDBRestangular', function (Restangular) {
         return Restangular.withConfig(function (RestangularConfigurer) {
             //RestangularConfigurer.setBaseUrl('http://localhost:3000');
             RestangularConfigurer.setBaseUrl('http://api.nal.usda.gov/ndb/');
@@ -123,18 +107,37 @@ angular
             });
         });
     })
-    .factory('Search', function (FoodRestangular) {
-        return FoodRestangular.service('search');
+    .factory('Search', function (NDBRestangular) {
+        return NDBRestangular.service('search');
     })
-    .factory('Food', function (FoodRestangular) {
-        return FoodRestangular.service('reports');
+    .factory('Food', function (NDBRestangular) {
+        return NDBRestangular.service('reports');
     })
-    .factory('SportRestangular', function (Restangular) {
+    .factory('ServerRestangular', function (Restangular) {
         return Restangular.withConfig(function (RestangularConfigurer) {
             RestangularConfigurer.setBaseUrl('http://localhost:3000');
 
         });
     })
-    .factory('Sport', function (SportRestangular) {
-        return SportRestangular.service('sport');
+    .factory('Sport', function (ServerRestangular) {
+        return ServerRestangular.service('sport');
+    })
+    .factory('FoodRecord', function (ServerRestangular) {
+        return ServerRestangular.service('foodRecord');
+    })
+    .factory('ExerciseRecord', function (ServerRestangular) {
+        return ServerRestangular.service('exerciseRecord');
     });
+
+
+
+
+
+
+
+
+
+
+
+
+

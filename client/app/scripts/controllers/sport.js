@@ -8,7 +8,7 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('SportCtrl', function ($scope, Sport, NgTableParams) {
+    .controller('SportCtrl', function ($scope, Sport, NgTableParams, ExerciseRecord) {
         $scope.setForWeight = 150;
         $scope.setWeight = function (weight) {
             return
@@ -108,4 +108,28 @@ angular.module('clientApp')
             return total;
         }
 
+        $scope.recordExercise = function(){
+            if ($scope.sportList.length === 0) {
+                alert("Please add exercise first!");
+                return;
+            }
+            var list = $scope.sportList;
+            list.forEach(function(sport){
+                sport.energy = sport.perHourLb*sport.time*$scope.setForWeight;
+            });
+            var params = {
+                userId : "fakeUser",
+                exerciseList: list,
+                totalEnergy: $scope.sportTotalEnergy()
+            }
+            ExerciseRecord.post(params).then(function(){
+                alert("Success!");
+            })
+        }
+
     });
+
+
+
+
+

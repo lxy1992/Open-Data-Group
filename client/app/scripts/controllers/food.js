@@ -8,7 +8,7 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('FoodCtrl', function ($scope, Food, Search, NgTableParams) {
+  .controller('FoodCtrl', function ($scope, Food, Search, NgTableParams, FoodRecord) {
     var param = {format:'json', sort:'n','max':25,'offset':0, api_key:'skDbzCwWhZtyMGlQyLFTt0XdWdoifWKWkxrkDxY7'};
 
     //store the list of food
@@ -189,6 +189,30 @@ angular.module('clientApp')
 
     $scope.add = function (index) {
         $scope.Product[index].quantity++;
+    }
+
+    $scope.recordFood = function(){
+        if ($scope.Product.length === 0) {
+            alert("Please add items first!");
+            return;
+        }
+        var list = [];
+        $scope.Product.forEach(function(item){
+            list.push({
+                name: item.name,
+                measure: item.measure,
+                quantity: item.quantity,
+                energy: item.quantity * item.nutrients["Energy"].measures[item.measure].value
+            })
+        });
+        var params = {
+            userId: "fakeUser",
+            foodList: list,
+            totalEnergy: $scope.totalEnergy()
+        };
+        FoodRecord.post(params).then(function(d){
+            alert("Success!");
+        });
     }
 
 
