@@ -65,7 +65,8 @@ angular.module('clientApp')
             if ($scope.startTime) {
                 return $scope.startTime;
             }
-            return new Date();
+            var time = new Date();
+            return moment(time).format('YYYY-MM-DD HH:mm');
         }
 
         $scope.getEndTime = function(){
@@ -74,8 +75,8 @@ angular.module('clientApp')
                 return $scope.endTime;
             }
             var time = new Date();
-            time.setHours(time.getHours()+1)
-            return time;
+            time.setHours(time.getHours()+2);
+            return moment(time).format('YYYY-MM-DD HH:mm')
         }
 
         $scope.getDescription = function(){
