@@ -200,55 +200,84 @@
                                     <!-- <p><strong>Page:</strong> {{tableParams.page()}}-->
                                     <!-- <p><strong>Count per page:</strong> {{tableParams.count()}}-->
                                 </div>
-                            <table ng-table="tableParams" class="table table-list-search">
-                                <tr ng-repeat="sports in $data ">
-                                    <td class="col-md-3" data-title="'Activity'">
-                                        <div class="longName">{{sports["Activity(1 hour)"]}}</div>
-                                    </td>
-                                    <td class="col-md-1" data-title="'130 lb (kCal/h）'">{{ sports["130 lb"] }}</td>
-                                    <td class="col-md-1" data-title="'155 lb (kCal/h)'">{{ sports["155 lb"] }}</td>
-                                    <td class="col-md-2" data-title="'Exercising Time (hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
-                                    <td class="col-md-2" data-title="'Action'">
-                                        <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#eventModal" ng-click="setEventIndex($index)"><span class="glyphicon glyphicon-plus-sign"></span> Add Event to Calendar</a>
-                                    </td>
-                                </tr>
-                            </table>
-                            <div id="eventModal" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Add Event</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <label>Title:</label>
-                                            <input type="text" name="title" style="width:500px" ng-model="eventTitle" ng-value="getEventTitle()"/>
-                                            <br>
-                                            <label>Start Time:</label>
-                                            <input id="st" type="text" name="start-time" style="width:300px" ng-model="startTime" ng-value="getStartTime()">
-                                            <br>
-                                            <label>End Time:</label>
-                                            <input id="et" type="text" name="end-time" style="width:300px" ng-model="endTime" ng-value="getEndTime()">
-                                            <br>
-                                            <label>Description</label>
-                                            <input ng-model="description"style="width:500px" ng-value="getDescription()">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div title="Add to Calendar" class="addeventatc theme2">
-                                                Add to Calendar
-                                                <span class="start">{{getStartTime()}}</span>
-                                                <span class="end">{{getEndTime()}}</span>
-                                                <span class="timezone">Europe/London</span>
-                                                <span class="title">{{getEventTitle()}}</span>
-                                                <span class="description">{{getDescription()}}</span>
-                                                <span class="all_day_event">false</span>
-                                                <span class="date_format">MM/DD/YYYY</span>
+                                <table ng-table="tableParams" class="table table-list-search">
+                                    <tr ng-repeat="sports in $data ">
+                                        <td class="col-md-3" data-title="'Activity'">
+                                            <div class="longName">{{sports["Activity(1 hour)"]}}</div>
+                                        </td>
+                                        <td class="col-md-1" data-title="'130 lb (kCal/h）'">{{ sports["130 lb"] }}</td>
+                                        <td class="col-md-1" data-title="'155 lb (kCal/h)'">{{ sports["155 lb"] }}</td>
+                                        <td class="col-md-2" data-title="'Exercising Time (hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
+                                        <td class="col-md-2" data-title="'Action'">
+                                            <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#eventModal" ng-click="setEventIndex($index)"><span class="glyphicon glyphicon-plus-sign"></span> Add Event to Calendar</a>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <div id="eventModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Add Event</h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <form class="form-inline">
+                                                                <div class="event">
+                                                                    <div class="form-group">
+                                                                        <label>Title:</label>
+                                                                        <input type="text" class="form-control" name="title" style="width:400px" ng-model="eventTitle" ng-value="getEventTitle()" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="event">
+                                                                    <div class="form-group">
+                                                                        <label>Start Time:</label>
+                                                                        <input id="st" type="text" class="form-control" name="start-time" style="width:200px" ng-model="startTime" ng-value="getStartTime()">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="event">
+                                                                    <div class="form-group">
+                                                                        <label>End Time:</label>
+                                                                        <input id="et" type="text" class="form-control" name="end-time" style="width:200px" ng-model="endTime" ng-value="getEndTime()">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="event">
+                                                                    <div class="form-group">
+                                                                        <label>Description</label>
+                                                                        <input ng-model="description" class="form-control" style="width:300px" ng-value="getDescription()">
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <div class="event">
+                                                                <div title="Add to Calendar" class="addeventatc theme2">
+                                                                    Add to Calendar
+                                                                    <span class="start">{{getStartTime()}}</span>
+                                                                    <span class="end">{{getEndTime()}}</span>
+                                                                    <span class="timezone">Europe/London</span>
+                                                                    <span class="title">{{getEventTitle()}}</span>
+                                                                    <span class="description">{{getDescription()}}</span>
+                                                                    <span class="all_day_event">false</span>
+                                                                    <span class="date_format">MM/DD/YYYY</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
