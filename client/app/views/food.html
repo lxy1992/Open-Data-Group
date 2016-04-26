@@ -234,7 +234,21 @@
                                             <label>Description</label>
                                             <input ng-model="description"style="width:500px" ng-value="getDescription()">
                                         </div>
-                                        <div class="modal-footer">
+                                        <div id="datepair">
+                                           <div>
+                                               <label>Start Time:</label>
+                                               <input type="text" class="date start" />
+                                               <input type="text" class="time start" /> 
+                                           </div>       
+                                            
+                                            <div>
+                                               <label>End Time:</label>
+                                                <input type="text" class="time end" />
+                                                <input type="text" class="date end" />
+                                            </div>
+                                            
+                                        </div>
+                                       <div class="modal-footer">
                                             <div title="Add to Calendar" class="addeventatc theme2">
                                                 Add to Calendar {{getEventTitle()}}
                                                 <span class="start">{{getStartTime()}}</span>
@@ -321,3 +335,18 @@
         </div>
     </div>
 </div>
+<script>
+    // initialize input widgets first
+    $('#datepair .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+
+    $('#datepair .date').datepicker({
+        'format': 'yyyy-m-d',
+        'autoclose': false
+    });
+
+    // initialize datepair
+    $('#datepair').datepair();
+</script>
