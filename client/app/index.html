@@ -9,7 +9,7 @@
 
     <title>HealthCal: Bootstrap Your Health</title>
 
-
+    <link rel="favicon" href="./favicon.ico" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -34,7 +34,7 @@
             <div class="container">
 
                 <a class="navbar-brand">
-                HealthCal</a>
+                    <img src="./images/navbar-logo.png" alt="HealthCal"></a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -59,7 +59,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a class="login" data-toggle="modal" data-target="#accountModal">Log in</a>
+                            <a ng-href="#/" class="login" data-toggle="modal" data-target="#accountModal">Log in</a>
                         </li>
                     </ul>
                 </div>
@@ -73,61 +73,78 @@
         <div id="accountModal" class="modal fade" role="dialog" ng-controller='UserCtrl'>
             <div class="modal-dialog modal-lg">
                 <div class="row">
-                    <div class="col-md-12 col-md-offset-1">
+                    <div class="col-md-8 col-md-offset-3">
                         <div class="modal-content accountModal">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Login to HealthCal.com</h4>
+                                <center>
+                                    <h4 class="modal-title" id="myModalLabel">Login to HealthCal.com</h4></center>
                             </div>
+
+                            <!--
+                            <div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well">
+                <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
+                    <div class="form-group">
+                        <label for="username" class="control-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
+                        <span class="help-block"></span>
+                    </div>
+                    <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember" id="remember"> Remember login
+                        </label>
+                        <p class="help-block">(if this is a private computer)</p>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Login</button>
+                    <a href="/forgot/" class="btn btn-default btn-block">Help to login</a>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-xs-6">
+            <p class="lead">Register now for <span class="text-success">FREE</span></p>
+            <ul class="list-unstyled" style="line-height: 3">
+                <li><span class="fa fa-check text-success"></span> Set up your diet plan</li>
+                <li><span class="fa fa-check text-success"></span> Calculate colories you take in</li>
+                <li><span class="fa fa-check text-success"></span> Calculate time needed to burn calories </li>
+                <li><span class="fa fa-check text-success"></span> Save your favorite recipes</li>
+                <li><span class="fa fa-check text-success"></span> Achieve your goal</li>
+
+            </ul>
+            <p><a href="#/user" class="btn btn-info btn-block">Yes please, register now!</a></p>
+        </div>
+
+    </div>
+-->
+
 
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-xs-6">
+                                    <div class="col-md-12">
                                         <div class="well">
-                                            <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
-                                                <div class="form-group">
-                                                    <label for="username" class="control-label">Username</label>
-                                                    <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
-                                                    <span class="help-block"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="password" class="control-label">Password</label>
-                                                    <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
-                                                    <span class="help-block"></span>
-                                                </div>
-                                                <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="remember" id="remember"> Remember login
-                                                    </label>
-                                                    <p class="help-block">(if this is a private computer)</p>
-                                                </div>
-                                                <button type="submit" class="btn btn-success btn-block">Login</button>
-                                                <a href="/forgot/" class="btn btn-default btn-block">Help to login</a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <p class="lead">Register now for <span class="text-success">FREE</span></p>
-                                        <ul class="list-unstyled" style="line-height: 3">
-                                            <li><span class="fa fa-check text-success"></span> Set up your diet plan</li>
-                                            <li><span class="fa fa-check text-success"></span> Calculate colories you take in</li>
-                                            <li><span class="fa fa-check text-success"></span> Calculate time needed to burn calories </li>
-                                            <li><span class="fa fa-check text-success"></span> Save your favorite recipes</li>
-                                            <!--                                    <li><span class="fa fa-check text-success"></span> Achieve your goal</li>-->
+                                            <a class="button primary google" href="https://accounts.google.com/o/oauth2/auth?response_type=code&amp;client_id=534890559860-r6gn7e3agcpiriehe63dkeus0tpl5i4i.apps.googleusercontent.com&amp;redirect_uri=https%3A%2F%2Ffeedly.com%2Fv3%2Fauth%2Fcallback&amp;scope=profile+email&amp;state=AyPE4vu0XxBWKmGUepfLw5scnQeqA1NHFXISVWlWfiiFhoDaVbBTS-0dGYARU1CicwdiRpkjWfCUGFs36HRyVzFyfWeujSMwDhj-veXkevUwG0_1Fkws-Ge-Hidkth8LVJBV9ktyDrVnH7lCKoMxYcjRTTrKghcu3dcKM8PGRTZnIZOd2ZxznFBYZeNhIQvFG5h8_qn3syd8fb08">Continue with <b>Google</b></a>
+                                            <a class="button primary apple" href="https://accounts.google.com/o/oauth2/auth?response_type=code&amp;client_id=534890559860-r6gn7e3agcpiriehe63dkeus0tpl5i4i.apps.googleusercontent.com&amp;redirect_uri=https%3A%2F%2Ffeedly.com%2Fv3%2Fauth%2Fcallback&amp;scope=profile+email&amp;state=AyPE4vu0XxBWKmGUepfLw5scnQeqA1NHFXISVWlWfiiFhoDaVbBTS-0dGYARU1CicwdiRpkjWfCUGFs36HRyVzFyfWeujSMwDhj-veXkevUwG0_1Fkws-Ge-Hidkth8LVJBV9ktyDrVnH7lCKoMxYcjRTTrKghcu3dcKM8PGRTZnIZOd2ZxznFBYZeNhIQvFG5h8_qn3syd8fb08">Continue with <b>Apple ID</b></a>
 
-                                        </ul>
-                                        <p><a href="#/user" class="btn btn-info btn-block">Yes please, register now!</a></p>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
 </header>
 
 
