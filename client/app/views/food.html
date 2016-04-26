@@ -209,11 +209,38 @@
                                     <td class="col-md-1" data-title="'130 lb (kCal/h）'">{{ sports["130 lb"] }}</td>
                                     <td class="col-md-1" data-title="'155 lb (kCal/h)'">{{ sports["155 lb"] }}</td>
                                     <td class="col-md-2" data-title="'Exercising Time (hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
-                                    <td class="col-md-1" data-title="'Action'">
-                                        <a class="btn btn-primary btn-sm" ng-click="addSport(sports)"><span class="glyphicon glyphicon-plus-sign"></span> Add</a>
+                                    <td class="col-md-2" data-title="'Action'">
+                                        <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#eventModal" ng-click="setEventIndex($index)"><span class="glyphicon glyphicon-plus-sign"></span> Add Event to Calendar</a>
                                     </td>
                                 </tr>
                             </table>
+                            <div id="eventModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Add Event</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label>Title:</label>
+                                            <input type="text" name="title" ng-init="sports['Activity(1 hour)']"/>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div title="Add to Calendar" class="addeventatc theme2">
+                                                Add to Calendar
+                                                <span class="start">05/10/2016 09:00 AM</span>
+                                                <span class="end">05/10/2016 11:00 AM</span>
+                                                <span class="timezone">Europe/London</span>
+                                                <span class="title">{{getEventTitle}}</span>
+                                                <span class="description">Exercise to burn extra calories.</span>
+                                                <span class="all_day_event">false</span>
+                                                <span class="date_format">MM/DD/YYYY</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

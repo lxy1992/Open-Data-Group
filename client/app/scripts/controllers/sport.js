@@ -10,6 +10,7 @@
 angular.module('clientApp')
     .controller('SportCtrl', function ($scope, Sport, NgTableParams, ExerciseRecord) {
         $scope.setForWeight = 150;
+        $scope.eventIndex = 0;
         $scope.setWeight = function (weight) {
             return
         };
@@ -18,14 +19,14 @@ angular.module('clientApp')
         Sport.getList().then(function (data, index) {
             $scope.sports = data;
             $scope.tableParams = new NgTableParams({
-                count: 5 //每页显示数量
+                count: 5 
             }, {
                 paginationMaxBlocks: 5,
                 paginationMinBlocks: 2,
                 data: $scope.sports
             });
 
-            console.log($scope.sports);
+            //console.log($scope.sports);
             //        $scope.tableParams.reload();
         });
 
@@ -42,6 +43,15 @@ angular.module('clientApp')
                 $scope.applyGlobalSearch();
             }
         })
+
+        $scope.setEventIndex = function(index){
+            $scope.eventIndex = index;
+        }
+
+        $scope.getEventTitle = function(){
+            console.log($scope.sports[$scope.eventIndex]);
+            return $scope.sports[$scope.eventIndex]["Activity(1 hour)"];
+        }
 
         // add food to list.
         $scope.addSport = function (sport) {
