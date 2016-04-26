@@ -44,13 +44,46 @@ angular.module('clientApp')
             }
         })
 
+        $("#st").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+
+        $("#et").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+
         $scope.setEventIndex = function(index){
             $scope.eventIndex = index;
         }
 
         $scope.getEventTitle = function(){
             console.log($scope.sports[$scope.eventIndex]);
+            if ($scope.eventTitle) {
+                return $scope.eventTitle;
+            }
             return $scope.sports[$scope.eventIndex]["Activity(1 hour)"];
+        }
+
+        $scope.getStartTime = function(){
+            //console.log($scope.sports[$scope.eventIndex]);
+            if ($scope.startTime) {
+                return $scope.startTime;
+            }
+            return new Date();
+        }
+
+        $scope.getEndTime = function(){
+            //console.log($scope.sports[$scope.eventIndex]);
+            if ($scope.endTime) {
+                return $scope.endTime;
+            }
+            var time = new Date();
+            time.setHours(time.getHours()+1)
+            return time;
+        }
+
+        $scope.getDescription = function(){
+            //console.log($scope.sports[$scope.eventIndex]);
+            if ($scope.description) {
+                return $scope.description;
+            }
+            return "Exercise to burn extra calories.";
         }
 
         // add food to list.

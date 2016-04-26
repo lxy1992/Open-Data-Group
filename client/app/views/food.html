@@ -223,16 +223,25 @@
                                         </div>
                                         <div class="modal-body">
                                             <label>Title:</label>
-                                            <input type="text" name="title" ng-model="title"/>
+                                            <input type="text" name="title" style="width:500px" ng-model="eventTitle" ng-value="getEventTitle()"/>
+                                            <br>
+                                            <label>Start Time:</label>
+                                            <input id="st" type="text" name="start-time" style="width:300px" ng-model="startTime" ng-value="getStartTime()">
+                                            <br>
+                                            <label>End Time:</label>
+                                            <input id="et" type="text" name="end-time" style="width:300px" ng-model="endTime" ng-value="getEndTime()">
+                                            <br>
+                                            <label>Description</label>
+                                            <input ng-model="description"style="width:500px" ng-value="getDescription()">
                                         </div>
                                         <div class="modal-footer">
                                             <div title="Add to Calendar" class="addeventatc theme2">
-                                                Add to Calendar
-                                                <span class="start">05/10/2016 09:00 AM</span>
-                                                <span class="end">05/10/2016 11:00 AM</span>
+                                                Add to Calendar {{getEventTitle()}}
+                                                <span class="start">{{getStartTime()}}</span>
+                                                <span class="end">{{getEndTime()}}</span>
                                                 <span class="timezone">Europe/London</span>
-                                                <span class="title">{{getEventTitle}}</span>
-                                                <span class="description">Exercise to burn extra calories.</span>
+                                                <span class="title">{{getEventTitle()}}</span>
+                                                <span class="description">{{getDescription()}}</span>
                                                 <span class="all_day_event">false</span>
                                                 <span class="date_format">MM/DD/YYYY</span>
                                             </div>
