@@ -17,4 +17,12 @@ angular.module('clientApp')
         $scope.exerciseRecords = data.plain();
     });
 
+    var events = [];
+
+    //$scope.foodRecords.forEach
+
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+    })
+
 });
