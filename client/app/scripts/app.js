@@ -51,10 +51,10 @@ angular
                 templateUrl: 'views/sport-view.html'
                 , controller: 'SportViewCtrl'
             })
-            .when('/user', {
-              templateUrl: 'views/user.html',
-              controller: 'UserCtrl'
-            })
+//            .when('/user', {
+            //              templateUrl: 'views/user.html',
+            //              controller: 'UserCtrl'
+            //            })
             .when('/personal', {
               templateUrl: 'views/personal.html',
               controller: 'PersonalCtrl',

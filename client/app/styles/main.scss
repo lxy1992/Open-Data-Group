@@ -9,10 +9,19 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     padding: 0.2em 0;
 }
 
-header {
-    margin-bottom: 25px;
+.navbar-brand {
+    padding: 0px;
 }
 
+.navbar-brand>img {
+    height: 100%;
+    padding: 7px;
+    width: auto;
+}
+
+//header {
+//    margin-bottom: 10px;
+//}
 body {
     margin-bottom: 80px;
     background-color: #167AC6;
@@ -24,6 +33,69 @@ h3 {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
+}
+
+
+/* Account*/
+
+.button.google {
+    background-color: #488ae9;
+    background-image: url('../images/login-google@2x.png')
+}
+
+.button.primary {
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    background-size: 28px 28px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    line-height: 56px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 56px;
+    text-decoration: none;
+    width: 224px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.button.apple {
+    background-color: #2BB24C;
+    background-image: url('../images/login-apple@2x.png')
+}
+
+.button.primary {
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    background-size: 28px 28px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    line-height: 56px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 56px;
+    text-decoration: none;
+    width: 224px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.button {
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+user agent stylesheet a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
 }
 
 
@@ -164,3 +236,6 @@ body.modal-open #wrap {
 .accountModal {
     width: 80%;
 }
+
+
+/* Calender */
