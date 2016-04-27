@@ -9,6 +9,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     padding: 0.2em 0;
 }
 
+.navbar {
+    background-color: white;
+}
+
 .navbar-brand {
     padding: 0px;
 }
@@ -24,7 +28,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 //}
 body {
     margin-bottom: 80px;
-    background-color: #167AC6;
+    //    background-color: white;
+    background-image: url(../images/background.png);
     font-size: 1.6em;
     padding: 0;
 }
@@ -244,3 +249,10 @@ body.modal-open #wrap {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+
+/*footer*/
+
+//footer {
+//    background-color: aliceblue;
+//}
