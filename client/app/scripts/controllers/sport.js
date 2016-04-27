@@ -25,7 +25,13 @@ angular.module('clientApp')
                 paginationMinBlocks: 2,
                 data: $scope.sports
             });
-
+            $scope.getEventTitle = function(){
+            //console.log($scope.sports[$scope.eventIndex]);
+            if ($scope.eventTitle) {
+                return $scope.eventTitle;
+            }
+            return $scope.sports[$scope.eventIndex]["Activity(1 hour)"];
+        }
             //console.log($scope.sports);
             //        $scope.tableParams.reload();
         });
@@ -52,13 +58,7 @@ angular.module('clientApp')
             $scope.eventIndex = index;
         }
 
-        $scope.getEventTitle = function(){
-            console.log($scope.sports[$scope.eventIndex]);
-            if ($scope.eventTitle) {
-                return $scope.eventTitle;
-            }
-            return $scope.sports[$scope.eventIndex]["Activity(1 hour)"];
-        }
+        
 
         $scope.getStartTime = function(){
             //console.log($scope.sports[$scope.eventIndex]);
