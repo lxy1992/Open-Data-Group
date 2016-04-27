@@ -54,8 +54,9 @@ angular.module('clientApp')
 
         $("#et").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
 
-        $scope.setEventIndex = function(index){
-            $scope.eventIndex = index;
+        $scope.setEventTitle = function(title, hour){
+            $scope.eventTitle = title;
+            $scope.eventDuration = hour;
         }
 
         
@@ -75,7 +76,7 @@ angular.module('clientApp')
                 return $scope.endTime;
             }
             var time = new Date();
-            time.setHours(time.getHours()+2);
+            time.setTime(time.getTime() + $scope.eventDuration * 60 * 60 * 1000);
             return moment(time).format('YYYY-MM-DD HH:mm')
         }
 

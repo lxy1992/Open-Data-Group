@@ -209,7 +209,7 @@
                                         <td class="col-md-1" data-title="'155 lb (kCal/h)'">{{ sports["155 lb"] }}</td>
                                         <td class="col-md-2" data-title="'Exercising Time (hours)'">{{ (totalEnergy()/(sports["1 lb"]*setForWeight)).toFixed(2) }}</td>
                                         <td class="col-md-2" data-title="'Action'">
-                                            <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#eventModal" ng-click="setEventIndex($index)"><span class="glyphicon glyphicon-plus-sign"></span> Add Event to Calendar</a>
+                                            <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#eventModal" ng-click="setEventTitle(sports['Activity(1 hour)'], (totalEnergy()/(sports['1 lb']*setForWeight)))"><span class="glyphicon glyphicon-plus-sign"></span> Add Event to Calendar</a>
                                         </td>
                                     </tr>
                                 </table>
@@ -231,7 +231,7 @@
                                                                 <div class="event">
                                                                     <div class="form-group">
                                                                         <label>Title </label>
-                                                                        <input type="text" class="form-control" name="title" style="width:400px" ng-model="eventTitle" ng-value="getEventTitle()" />
+                                                                        <input type="text" class="form-control" name="title" style="width:400px" ng-model="eventTitle" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="event">
@@ -269,7 +269,7 @@
                                                         <span class="start">{{getStartTime()}}</span>
                                                         <span class="end">{{getEndTime()}}</span>
                                                         <span class="timezone">Europe/London</span>
-                                                        <span class="title">{{getEventTitle()}}</span>
+                                                        <span class="title">{{eventTitle}}</span>
                                                         <span class="description">{{getDescription()}}</span>
                                                         <span class="all_day_event">false</span>
                                                         <span class="date_format">MM/DD/YYYY</span>
