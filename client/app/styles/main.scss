@@ -167,8 +167,12 @@ img.img-thumbnail {
 
 /* Dash line*/
 
-hr {
+hr.small {
     max-width: 100px;
+}
+
+hr.long {
+    max-width: 1000px;
 }
 
 
